@@ -2,18 +2,8 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  
- <meta name="google-site-verification" content="ztatSuWZLrflD-JuSSFPcZjDZH2LgrItdKtYgDaQenA" />
-
+  <meta name="google-site-verification" content="ztatSuWZLrflD-JuSSFPcZjDZH2LgrItdKtYgDaQenA" />
   <meta name="description" content="にゃんこ大戦争の超激レアの所持キャラをチェックできます">
-    
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  
- <meta name="google-site-verification" content="ztatSuWZLrflD-JuSSFPcZjDZH2LgrItdKtYgDaQenA" />
-  
   <title>にゃんこ大戦争 所持チェッカー</title>
   
   <style>
@@ -77,7 +67,6 @@
     /* --- グリッドレイアウト --- */
     .char-grid {
       display: grid;
-      /* スマホで見やすいよう最小幅を80pxに設定 */
       grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
       gap: 12px;
       padding: 10px;
@@ -89,14 +78,14 @@
       margin: 0;
       text-align: center;
       cursor: pointer;
-      -webkit-tap-highlight-color: transparent; /* スマホのタップ色を消す */
+      -webkit-tap-highlight-color: transparent;
     }
 
     /* --- 画像の設定 --- */
     .char-item img {
       width: 100%;
       height: auto;
-      min-height: 60px; /* 読み込み前のガタつき防止 */
+      min-height: 60px;
       background-color: #333;
       filter: brightness(0.3) grayscale(0.7);
       transition: filter 0.2s, border-color 0.2s;
@@ -114,7 +103,7 @@
       word-break: break-all;
     }
 
-    /* --- 所持済みの状態（ownedクラスがついた時） --- */
+    /* --- 所持済みの状態 --- */
     .char-item.owned img {
       filter: brightness(1.0) grayscale(0);
       border-color: #ffcc00;
@@ -130,125 +119,38 @@
 <body>
 
   <div class="status-bar">
-  <div class="status-info">
-    全キャラ所持率：<span id="status">0</span>% 
-    <span id="count-display" style="font-size: 0.8em; color: #aaa; margin-left: 5px;">(0/0)</span>
-  </div>
-  <button class="reset-btn" onclick="resetAll()">全リセット</button>
-</div>
-
-  <div class="category">
-    <h2>超激ダイナマイツ</h2>
-    <div id="list-dynamites" class="char-grid"></div>
+    <div class="status-info">
+      全キャラ所持率：<span id="status">0</span>% 
+      <span id="count-display" style="font-size: 0.8em; color: #aaa; margin-left: 5px;">(0/0)</span>
+    </div>
+    <button class="reset-btn" onclick="resetAll()">全リセット</button>
   </div>
 
-  <div class="category">
-    <h2>戦国武神バサラーズ</h2>
-    <div id="list-basalas" class="char-grid"></div>
-  </div>
+  <div class="category"><h2>超激ダイナマイツ</h2><div id="list-dynamites" class="char-grid"></div></div>
+  <div class="category"><h2>戦国武神バサラーズ</h2><div id="list-basalas" class="char-grid"></div></div>
+  <div class="category"><h2>電脳学園ギャラクシーギャルズ</h2><div id="list-gals" class="char-grid"></div></div>
+  <div class="category"><h2>超破壊大帝ドラゴンエンペラーズ</h2><div id="list-doragon" class="char-grid"></div></div>
+  <div class="category"><h2>超古代勇者ウルトラソウルズ</h2><div id="list-souls" class="char-grid"></div></div>
+  <div class="category"><h2>逆襲の英雄ダークヒーローズ</h2><div id="heros" class="char-grid"></div></div>
+  <div class="category"><h2>究極降臨ギガントゼウス</h2><div id="zeus" class="char-grid"></div></div>
+  <div class="category"><h2>革命軍隊アイアンウォーズ</h2><div id="iron" class="char-grid"></div></div>
+  <div class="category"><h2>大精霊エレメンタルピクシーズ</h2><div id="pixys" class="char-grid"></div></div>
+  <div class="category"><h2>絶命美少女ギャルズモンスターズ</h2><div id="zetumei" class="char-grid"></div></div>
+  <div class="category"><h2>伝説のネコルガ族</h2><div id="ruga" class="char-grid"></div></div>
+  <div class="category"><h2>バスターズ</h2><div id="busters" class="char-grid"></div></div>
+  <div class="category"><h2>超ネコ祭</h2><div id="chounekosai" class="char-grid"></div></div>
+  <div class="category"><h2>極ネコ祭</h2><div id="gokunekosai" class="char-grid"></div></div>
+  <div class="category"><h2>バレンタインギャルズ</h2><div id="valentine" class="char-grid"></div></div>
+  <div class="category"><h2>俺たちが主役ホワイトデー</h2><div id="whiteday" class="char-grid"></div></div>
+  <div class="category"><h2>イースターカーニバル</h2><div id="easter" class="char-grid"></div></div>
+  <div class="category"><h2>ジューンブライド</h2><div id="june" class="char-grid"></div></div>
+  <div class="category"><h2>サマーガールズ</h2><div id="summer" class="char-grid"></div></div>
+  <div class="category"><h2>ハロウィン</h2><div id="halloween" class="char-grid"></div></div>
+  <div class="category"><h2>クリスマスギャルズ</h2><div id="chrismas" class="char-grid"></div></div>
+  <div class="category"><h2>その他</h2><div id="extra" class="char-grid"></div></div>
 
- <div class="category">
-    <h2>電脳学園ギャラクシーギャルズ</h2>
-    <div id="list-gals" class="char-grid"></div>
-  </div>
-
-  <div class="category">
-    <h2>超破壊大帝ドラゴンエンペラーズ</h2>
-    <div id="list-doragon" class="char-grid"></div>
-  </div>
-  
-  <div class="category">
-    <h2>超古代勇者ウルトラソウルズ</h2>
-    <div id="list-souls" class="char-grid"></div>
-  </div>
-
-  <div class="category">
-    <h2>逆襲の英雄ダークヒーローズ</h2>
-    <div id="heros" class="char-grid"></div>
-  </div>
-
-  <div class="category">
-    <h2>究極降臨ギガントゼウス</h2>
-    <div id="zeus" class="char-grid"></div>
-  </div>
-  
-  <div class="category">
-    <h2>革命軍隊アイアンウォーズ</h2>
-    <div id="iron" class="char-grid"></div>
-  </div>
-  
-  <div class="category">
-    <h2>大精霊エレメンタルピクシーズ</h2>
-    <div id="pixys" class="char-grid"></div>
-  </div>
-  
-  <div class="category">
-    <h2>絶命美少女ギャルズモンスターズ</h2>
-    <div id="zetumei" class="char-grid"></div>
-  </div>
-  
-  <div class="category">
-    <h2>伝説のネコルガ族</h2>
-    <div id="ruga" class="char-grid"></div>
-  </div>
-  
-  <div class="category">
-    <h2>バスターズ</h2>
-    <div id="busters" class="char-grid"></div>
-  </div>
-   
-  <div class="category">
-    <h2>超ネコ祭</h2>
-    <div id="chounekosai" class="char-grid"></div>
-  </div>
-   
-  <div class="category">
-    <h2>極ネコ祭</h2>
-    <div id="gokunekosai" class="char-grid"></div>
-  </div>
-     
-  <div class="category">
-    <h2>バレンタインギャルズ</h2>
-    <div id="valentine" class="char-grid"></div>
-  </div>
-   
-  <div class="category">
-    <h2>俺たちが主役ホワイトデー</h2>
-    <div id="whiteday" class="char-grid"></div>
-  </div>
-     
-  <div class="category">
-    <h2>イースターカーニバル</h2>
-    <div id="easter" class="char-grid"></div>
-  </div>
-   
-  <div class="category">
-    <h2>ジューンブライド</h2>
-    <div id="june" class="char-grid"></div>
-  </div>
-     
-  <div class="category">
-    <h2>サマーガールズ</h2>
-    <div id="summer" class="char-grid"></div>
-  </div>
-   
-  <div class="category">
-    <h2>ハロウィン</h2>
-    <div id="halloween" class="char-grid"></div>
-  </div>
-     
-  <div class="category">
-    <h2>クリスマスギャルズ</h2>
-    <div id="chrismas" class="char-grid"></div>
-  </div>
-   
-  <div extraclass="category">
-    <h2>その他</h2>
-    <div id="extra" class="char-grid"></div>
-  </div>
-  
   <script>
- // --- 1. データリスト (DateをDataに修正し、重複エラーを回避) ---
+    // --- 1. データリスト ---
     const dynamitesData = [
       { id: "d_001_icecat", name: "ネコアイス" },
       { id: "d_002_catmachine", name: "ネコマシン" },
@@ -283,7 +185,7 @@
       { id: "g_002", name: "雷神のサンディア"},
       { id: "g_003", name: "猿帝のクウ"},
       { id: "g_004", name: "召し豚のカイ"},
-      { id: "g_005", name: "宝杖のカッパーマイン"}, // カンマを1つに修正
+      { id: "g_005", name: "宝杖のカッパーマイン"},
       { id: "g_006", name: "冥界のカリファ"},
       { id: "g_007", name: "双掌星のシシコ＆コマリ"},
       { id: "g_008", name: "英雄令嬢メルシュ"},
@@ -406,7 +308,7 @@
       {id: "bs_003", name:"風隼さくら"},
       {id: "bs_004", name:"地獄警官エマ"},
       {id: "bs_005", name:"光の女神シリウス"},
-    ]
+    ];
 
     const chounekosaiData = [
       {id: "cn_001", name:"幼獣ガオ"},
@@ -418,7 +320,7 @@
       {id: "cn_007", name:"運命の子フォノ"},
       {id: "cn_008", name:"幼天女ルーナ"},
       {id: "cn_009", name:"幼騎士ルーノ"},
-    ]
+    ];
 
     const gokunekosaiData = [
       {id: "gn_001", name:"黒獣ガオウ"},
@@ -430,34 +332,34 @@
       {id: "gn_007", name:"非命の王フォノウ"},
       {id: "gn_008", name:"冥護の天女ルナーシャ"},
       {id: "gn_009", name:"孤月の騎士ルーノス"}
-    ]
+    ];
 
     const valentineData = [
       {id: "va_001", name:"恋女神ショコラディーテ"},
       {id: "va_002", name:"初恋令嬢メルシュ"},
       {id: "va_003", name:"白い恋人メカ子"},
-    ]
+    ];
 
     const whitedayData = [
       {id: "wh_001", name:"恋番長・鬼にゃんま"},
       {id: "wh_002", name:"白執事探偵ヴィグラー"},
       {id: "wh_003", name:"ネコアイスホワイトスター"},
       {id: "wh_004", name:"マジシャンキャットマン"},
-    ]
+    ];
 
- const easterData = [
+    const easterData = [
       {id: "ea_001", name:"上杉謙信・春"},
       {id: "ea_002", name:"道化師エッグダック"},
       {id: "ea_003", name:"春龍かむくら"},
       {id: "ea_004", name:"決闘少年ラビットサトル"},
       {id: "ea_005", name:"スプリングカリファ"},
-    ]
+    ];
 
     const juneData = [
       {id: "ju_001", name:"祝福神クロノス"},
       {id: "ju_002", name:"バララガの誓い"},
       {id: "ju_003", name:"ネコケーキマシン挙式"},
-    ]
+    ];
 
     const summerData = [
       {id: "su_001", name:"トロピカルカリファ"},
@@ -472,7 +374,7 @@
       {id: "su_010", name:"波打ち際の冒険家カンナ"},
       {id: "su_011", name:"サマーフェスサンディア"},
       {id: "su_012", name:"シーサイドペガサ"},
-    ]
+    ];
 
     const halloweenData = [
       {id: "ha_001", name:"ウィンディスイート"},
@@ -481,7 +383,7 @@
       {id: "ha_004", name:"竜騎士スカルバルス"},
       {id: "ha_005", name:"伯爵・真田幸村"},
       {id: "ha_006", name:"パンプキンソドム"},
-    ]
+    ];
 
     const chrismasData = [
       {id: "ch_001", name:"雪だるまのスノーカイ"},
@@ -492,7 +394,7 @@
       {id: "ch_006", name:"前田サンタ慶次"},
       {id: "ch_007", name:"トナカイ娘テルン"},
       {id: "ch_008", name:"冬将軍成田甲斐"},
-    ]
+    ];
 
     const extraData = [
       {id: "ex_001", name:"ちびネコヴァルキリー"},
@@ -502,22 +404,7 @@
       {id: "ex_005", name:"こねこ"},
       {id: "ex_006", name:"エージェントスタール"},
       {id: "ex_007", name:"ニャンコオー"},
-    ]
-
-    const emptyData = [
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-    ]
+    ];
 
     // --- 2. HTML生成関数 ---
     function generateGrid(dataList, targetId) {
@@ -534,7 +421,7 @@
       container.innerHTML = html;
     }
 
-    // --- 3. ページ読み込み時の処理 (すべてのカテゴリーを命令に追加) ---
+    // --- 3. ページ読み込み時の処理 ---
     window.onload = function() {
       generateGrid(dynamitesData, "list-dynamites");
       generateGrid(basalasData, "list-basalas");
@@ -563,1191 +450,6 @@
       updateStatus();
     };
 
-    // --- (以下、check, saveProgressなどは変更なしのため省略可能ですが、そのまま残してください) ---
-    function check(element) {
-      element.classList.toggle("owned");
-      saveProgress();
-      updateStatus();
-    }
-    function saveProgress() {
-      const ownedElements = document.querySelectorAll(".char-item.owned");
-      const ownedIds = Array.from(ownedElements).map(el => el.id);
-      localStorage.setItem("nyanko_save", JSON.stringify(ownedIds));
-    }
-    function loadProgress() {
-      const savedData = localStorage.getItem("nyanko_save");
-      if (!savedData) return;
-      const ownedIds = JSON.parse(savedData);
-      ownedIds.forEach(id => {
-        const target = document.getElementById(id);
-        if (target) target.classList.add("owned");
-      });
-    }
-    function updateStatus() {
-      const all = document.querySelectorAll(".char-item").length;
-      const owned = document.querySelectorAll(".char-item.owned").length;
-      const percent = all > 0 ? Math.floor((owned / all) * 100) : 0;
-      document.getElementById("status").textContent = percent;
-      document.getElementById("count-display").textContent = `(${owned}/${all})`;
-    }
-    function resetAll() {
-      if (confirm("チェックをすべて外しますか？")) {
-        document.querySelectorAll(".char-item.owned").forEach(item => {
-          item.classList.remove("owned");
-        });
-        localStorage.removeItem("nyanko_save");
-        updateStatus();
-      }
-    }
-  </script>
-</body>
-</html>
-  <!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  
- <meta name="google-site-verification" content="ztatSuWZLrflD-JuSSFPcZjDZH2LgrItdKtYgDaQenA" />
-  
-  <title>にゃんこ大戦争 所持チェッカー</title>
-  
-  <style>
-    /* --- 基本デザイン --- */
-    body {
-      background-color: #1a1a1a;
-      color: #ffffff;
-      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-      margin: 0;
-      padding: 0;
-      padding-bottom: 50px;
-    }
-
-    /* --- 上部固定ステータスバー --- */
-    .status-bar {
-      position: sticky;
-      top: 0;
-      background: rgba(30, 30, 30, 0.95);
-      padding: 15px;
-      border-bottom: 2px solid #ffcc00;
-      z-index: 100;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .status-info {
-      font-size: 1.1em;
-      font-weight: bold;
-    }
-
-    #status {
-      color: #ffcc00;
-      font-size: 1.4em;
-    }
-
-    /* --- リセットボタン --- */
-    .reset-btn {
-      padding: 6px 12px;
-      cursor: pointer;
-      background-color: #ff4444;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      font-weight: bold;
-      font-size: 0.8em;
-    }
-
-    /* --- カテゴリー見出し --- */
-    h2 {
-      border-left: 5px solid #ffcc00;
-      padding-left: 10px;
-      margin: 20px 10px 10px;
-      font-size: 1.1em;
-      color: #ffcc00;
-    }
-
-    /* --- グリッドレイアウト --- */
-    .char-grid {
-      display: grid;
-      /* スマホで見やすいよう最小幅を80pxに設定 */
-      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-      gap: 12px;
-      padding: 10px;
-      align-items: start;
-    }
-
-    /* --- キャラクター1体分の枠 --- */
-    .char-item {
-      margin: 0;
-      text-align: center;
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent; /* スマホのタップ色を消す */
-    }
-
-    /* --- 画像の設定 --- */
-    .char-item img {
-      width: 100%;
-      height: auto;
-      min-height: 60px; /* 読み込み前のガタつき防止 */
-      background-color: #333;
-      filter: brightness(0.3) grayscale(0.7);
-      transition: filter 0.2s, border-color 0.2s;
-      border-radius: 6px;
-      border: 2px solid #444;
-      display: block;
-    }
-
-    /* --- 名前（figcaption）のデザイン --- */
-    .char-item figcaption {
-      font-size: 10px;
-      margin-top: 5px;
-      color: #999;
-      line-height: 1.2;
-      word-break: break-all;
-    }
-
-    /* --- 所持済みの状態（ownedクラスがついた時） --- */
-    .char-item.owned img {
-      filter: brightness(1.0) grayscale(0);
-      border-color: #ffcc00;
-      box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
-    }
-
-    .char-item.owned figcaption {
-      color: #ffcc00;
-      font-weight: bold;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="status-bar">
-  <div class="status-info">
-    全キャラ所持率：<span id="status">0</span>% 
-    <span id="count-display" style="font-size: 0.8em; color: #aaa; margin-left: 5px;">(0/0)</span>
-  </div>
-  <button class="reset-btn" onclick="resetAll()">全リセット</button>
-</div>
-
-  <div class="category">
-    <h2>超激ダイナマイツ</h2>
-    <div id="list-dynamites" class="char-grid"></div>
-  </div>
-
-  <div class="category">
-    <h2>戦国武神バサラーズ</h2>
-    <div id="list-basalas" class="char-grid"></div>
-  </div>
-
- <div class="category">
-    <h2>電脳学園ギャラクシーギャルズ</h2>
-    <div id="list-gals" class="char-grid"></div>
-  </div>
-
-  <div class="category">
-    <h2>超破壊大帝ドラゴンエンペラーズ</h2>
-    <div id="list-doragon" class="char-grid"></div>
-  </div>
-  
-  <div class="category">
-    <h2>超古代勇者ウルトラソウルズ</h2>
-    <div id="list-souls" class="char-grid"></div>
-  </div>
-
-  <div class="category">
-    <h2>逆襲の英雄ダークヒーローズ</h2>
-    <div id="heros" class="char-grid"></div>
-  </div>
-
-  <div class="category">
-    <h2>究極降臨ギガントゼウス</h2>
-    <div id="zeus" class="char-grid"></div>
-  </div>
-  
-  <div class="category">
-    <h2>革命軍隊アイアンウォーズ</h2>
-    <div id="iron" class="char-grid"></div>
-  </div>
-  
-  <div class="category">
-    <h2>大精霊エレメンタルピクシーズ</h2>
-    <div id="pixys" class="char-grid"></div>
-  </div>
-  
-  <div class="category">
-    <h2>絶命美少女ギャルズモンスターズ</h2>
-    <div id="zetumei" class="char-grid"></div>
-  </div>
-  
-  <div class="category">
-    <h2>伝説のネコルガ族</h2>
-    <div id="ruga" class="char-grid"></div>
-  </div>
-  
-  <div class="category">
-    <h2>バスターズ</h2>
-    <div id="busters" class="char-grid"></div>
-  </div>
-   
-  <div class="category">
-    <h2>超ネコ祭</h2>
-    <div id="chounekosai" class="char-grid"></div>
-  </div>
-   
-  <div class="category">
-    <h2>極ネコ祭</h2>
-    <div id="gokunekosai" class="char-grid"></div>
-  </div>
-     
-  <div class="category">
-    <h2>バレンタインギャルズ</h2>
-    <div id="valentine" class="char-grid"></div>
-  </div>
-   
-  <div class="category">
-    <h2>俺たちが主役ホワイトデー</h2>
-    <div id="whiteday" class="char-grid"></div>
-  </div>
-     
-  <div class="category">
-    <h2>イースターカーニバル</h2>
-    <div id="easter" class="char-grid"></div>
-  </div>
-   
-  <div class="category">
-    <h2>ジューンブライド</h2>
-    <div id="june" class="char-grid"></div>
-  </div>
-     
-  <div class="category">
-    <h2>サマーガールズ</h2>
-    <div id="summer" class="char-grid"></div>
-  </div>
-   
-  <div class="category">
-    <h2>ハロウィン</h2>
-    <div id="halloween" class="char-grid"></div>
-  </div>
-     
-  <div class="category">
-    <h2>クリスマスギャルズ</h2>
-    <div id="chrismas" class="char-grid"></div>
-  </div>
-   
-  <div extraclass="category">
-    <h2>その他</h2>
-    <div id="extra" class="char-grid"></div>
-  </div>
-  
-  <script>
- // --- 1. データリスト (DateをDataに修正し、重複エラーを回避) ---
-    const dynamitesData = [
-      { id: "d_001_icecat", name: "ネコアイス" },
-      { id: "d_002_catmachine", name: "ネコマシン" },
-      { id: "d_003_oninyanma", name: "鬼にゃんま" },
-      { id: "d_004_catchevalier", name: "ネコシュバリエ" },
-      { id: "d_005_catbaby", name: "ねこベビー" },
-      { id: "d_006_nersecat", name: "ねこナース" },
-      { id: "d_007_catquest", name: "ネコクエスト" },
-      { id: "d_008_lasvors", name: "ラスヴォ―ス" },
-      { id: "d_009_satoru", name: "召喚少年サトル" },
-      { id: "d_010_tengucat", name: "ネコ天狗" },
-      { id: "d_011_catdynazaurus", name: "ネコダイナザウルス" }
-    ];
-
-    const basalasData = [
-      { id: "b_001_sanada", name: "真田幸村" },
-      { id: "b_002_maeda", name: "前田慶次" },
-      { id: "b_003_oda", name: "織田信長" },
-      { id: "b_004_date", name: "伊達政宗" },
-      { id: "b_005_takeda", name: "武田信玄" },
-      { id: "b_006_uesugi", name: "上杉謙信" },
-      { id: "b_007_imagawa", name: "今川義元" },
-      { id: "b_008_narita", name: "成田甲斐" },
-      { id: "b_009_amakusa", name: "天草四郎" },
-      { id: "b_010_hattori", name: "服部半蔵" },
-      { id: "b_011_aketi", name: "明智光秀" },
-      { id: "b_012_huuma", name: "風魔小太郎" }
-    ];
-
-    const galsData = [
-      { id: "g_001", name: "風神のウィンディ"},
-      { id: "g_002", name: "雷神のサンディア"},
-      { id: "g_003", name: "猿帝のクウ"},
-      { id: "g_004", name: "召し豚のカイ"},
-      { id: "g_005", name: "宝杖のカッパーマイン"}, // カンマを1つに修正
-      { id: "g_006", name: "冥界のカリファ"},
-      { id: "g_007", name: "双掌星のシシコ＆コマリ"},
-      { id: "g_008", name: "英雄令嬢メルシュ"},
-      { id: "g_009", name: "妖賢女リリン"},
-      { id: "g_010", name: "狩猟娘テルン"},
-      { id: "g_011", name: "鉄籠のペガサ"},
-      { id: "g_012", name: "獅子番長ラクレス"}
-    ];
-
-    const doragonData = [
-      { id: "e_001", name: "地龍ソドム"},
-      { id: "e_002", name: "聖龍メギドラ"},
-      { id: "e_003", name: "竜騎士バルス"},
-      { id: "e_004", name: "神龍かむくら"},
-      { id: "e_005", name: "竜戦機ライデン"},
-      { id: "e_006", name: "覇龍ディオラムス"},
-      { id: "e_007", name: "古龍ガングリオン"},
-      { id: "e_008", name: "角龍グラディオス"},
-      { id: "e_009", name: "邪龍ヘヴィジャーク"},
-      { id: "e_010", name: "海龍ダライアサン"},
-      { id: "e_011", name: "砲龍ガンドロス"}
-    ];
-
-    const soulsData = [
-      { id: "u_001", name: "うらしまタロウ"},
-      { id: "u_002", name: "ツルの恩返し"},
-      { id: "u_003", name: "ももたろう"},
-      { id: "u_004", name: "かさじぞう"},
-      { id: "u_005", name: "かぐやひめ"},
-      { id: "u_006", name: "カチカチヤマンズ"},
-      { id: "u_007", name: "さるかに合戦"},
-      { id: "u_008", name: "きんたろう"},
-      { id: "u_009", name: "舌切りすずめ"},
-      { id: "u_010", name: "いっすん法師"},
-      { id: "u_011", name: "花咲かじいさん"}
-    ];
-    
-    const herosData = [
-      { id: "h_001", name: "アキラ"},
-      { id: "h_002", name: "西園寺メカ子"},
-      { id: "h_003", name: "キャットマンダディ"},
-      { id: "h_004", name: "ホワイトラビット"},
-      { id: "h_005", name: "呪術師デスピエロ"},
-      { id: "h_006", name: "天誅ハヤブサ"},
-      { id: "h_007", name: "亡者探偵ヴィグラー"},
-      { id: "h_008", name: "マッドシューター・サキ"},
-      { id: "h_009", name: "白騎士キュクプロス"},
-      { id: "h_010", name: "サンダージャック"},
-      { id: "h_011", name: "特命機動アクセル"}
-    ];
-
-    const zeusData = [
-      { id: "z_001", name: "天空神ゼウス"},
-      { id: "z_002", name: "守護神アヌビス"},
-      { id: "z_003", name: "美女神アフロディーテ"},
-      { id: "z_004", name: "太陽神アマテラス"},
-      { id: "z_005", name: "繫栄神ガネーシャ"},
-      { id: "z_006", name: "海王神ポセイドン"},
-      { id: "z_007", name: "時空神クロノス"},
-      { id: "z_008", name: "冥界神ハデス"},
-      { id: "z_009", name: "堕天神ルシファー"},
-      { id: "z_010", name: "光翼神イシス"},
-      { id: "z_011", name: "韋駄天スカンダ"}
-    ];
-
-    const ironData = [
-      { id: "i_001", name: "帝国陸軍カタパルズ"},
-      { id: "i_002", name: "古代軍船ガレーズ"},
-      { id: "i_003", name: "飛空襲撃ボンバーズ"},
-      { id: "i_004", name: "観測兵器ガリレオ"},
-      { id: "i_005", name: "温泉天国テルマエ"},
-      { id: "i_006", name: "空中商会コロンブス"},
-      { id: "i_007", name: "超竜戦機デス・トロイ"},
-      { id: "i_008", name: "周遊芸団カルーセルズ"},
-      { id: "i_009", name: "建築兵団スフィンクス"},
-      { id: "i_010", name: "曲射砲台ランチャーズ"}
-    ];
-
-    const pixysData = [
-      { id: "p_001", name: "火の精霊メララ"},
-      { id: "p_002", name: "水の精霊ミズリィ"},
-      { id: "p_003", name: "風の精霊エアル"},
-      { id: "p_004", name: "雷の精霊ボルト"},
-      { id: "p_005", name: "石の精霊ゴロー"},
-      { id: "p_006", name: "闇の精霊ヤミィ"},
-      { id: "p_007", name: "氷の精霊フリズ"},
-      { id: "p_008", name: "鉄の精霊カッチン"},
-      { id: "p_009", name: "樹の精霊コモリ"}
-    ];
-
-    const zetumeiData = [
-      { id: "m_001", name: "狐娘ヒメユリ"},
-      { id: "m_002", name: "人魚娘ルリィ"},
-      { id: "m_003", name: "ミイラ娘レイカ"},
-      { id: "m_004", name: "狼娘ディル"},
-      { id: "m_005", name: "ゾンビ娘ヴェルヴェーヌ"},
-      { id: "m_006", name: "冒険家カンナ"},
-      { id: "m_007", name: "女神ベガ"},
-      { id: "m_008", name: "忍者娘トモエ"},
-      { id: "m_009", name: "魔導士シドミ"}
-    ];
-
-    const rugaData = [
-      { id: "r_001", name: "ネコルガ"},
-      { id: "r_002", name: "アシルガ"},
-      { id: "r_003", name: "クビルガ"},
-      { id: "r_004", name: "テコルガ"},
-      { id: "r_005", name: "バララガ"},
-      { id: "r_006", name: "トゲルガ"},
-      { id: "r_007", name: "ノビルガ"},
-      { id: "r_008", name: "オイルガ"},
-      { id: "r_009", name: "オコルガ"},
-      { id: "r_010", name: "カオルガ"},
-      { id: "r_011", name: "マモルガ"}
-    ];
-
-    const bustersData = [
-      {id: "bs_001", name:"猫飯拳パイパイ"},
-      {id: "bs_002", name:"閃雷機兵レイ"},
-      {id: "bs_003", name:"風隼さくら"},
-      {id: "bs_004", name:"地獄警官エマ"},
-      {id: "bs_005", name:"光の女神シリウス"},
-    ]
-
-    const chounekosaiData = [
-      {id: "cn_001", name:"幼獣ガオ"},
-      {id: "cn_002", name:"巫女姫ミタマ"},
-      {id: "cn_003", name:"幼傑ダルターニャ"},
-      {id: "cn_004", name:"厄災の子キャスリィ"},
-      {id: "cn_005", name:"幼獣ガル"},
-      {id: "cn_006", name:"踊り子イズ"},
-      {id: "cn_007", name:"運命の子フォノ"},
-      {id: "cn_008", name:"幼天女ルーナ"},
-      {id: "cn_009", name:"幼騎士ルーノ"},
-    ]
-
-    const gokunekosaiData = [
-      {id: "gn_001", name:"黒獣ガオウ"},
-      {id: "gn_002", name:"黒無垢のミタマ"},
-      {id: "gn_003", name:"影傑ダルターニャ"},
-      {id: "gn_004", name:"禍根の魔女キャスリィ"},
-      {id: "gn_005", name:"黒獣ガルディアン"},
-      {id: "gn_006", name:"悲嘆の踊り子イズ"},
-      {id: "gn_007", name:"非命の王フォノウ"},
-      {id: "gn_008", name:"冥護の天女ルナーシャ"},
-      {id: "gn_009", name:"孤月の騎士ルーノス"}
-    ]
-
-    const valentineData = [
-      {id: "va_001", name:"恋女神ショコラディーテ"},
-      {id: "va_002", name:"初恋令嬢メルシュ"},
-      {id: "va_003", name:"白い恋人メカ子"},
-    ]
-
-    const whitedayData = [
-      {id: "wh_001", name:"恋番長・鬼にゃんま"},
-      {id: "wh_002", name:"白執事探偵ヴィグラー"},
-      {id: "wh_003", name:"ネコアイスホワイトスター"},
-      {id: "wh_004", name:"マジシャンキャットマン"},
-    ]
-
- const easterData = [
-      {id: "ea_001", name:"上杉謙信・春"},
-      {id: "ea_002", name:"道化師エッグダック"},
-      {id: "ea_003", name:"春龍かむくら"},
-      {id: "ea_004", name:"決闘少年ラビットサトル"},
-      {id: "ea_005", name:"スプリングカリファ"},
-    ]
-
-    const juneData = [
-      {id: "ju_001", name:"祝福神クロノス"},
-      {id: "ju_002", name:"バララガの誓い"},
-      {id: "ju_003", name:"ネコケーキマシン挙式"},
-    ]
-
-    const summerData = [
-      {id: "su_001", name:"トロピカルカリファ"},
-      {id: "su_002", name:"真夏のホワイトラビット"},
-      {id: "su_003", name:"常夏の果実カイ"},
-      {id: "su_004", name:"灼熱のビーチクウ"},
-      {id: "su_005", name:"潮風のセーラーカッパーマイン"},
-      {id: "su_006", name:"アクアシューターサキ"},
-      {id: "su_007", name:"ネコルガの夏"},
-      {id: "su_008", name:"渚のかぐや姫"},
-      {id: "su_009", name:"ナイトビーチリリン"},
-      {id: "su_010", name:"波打ち際の冒険家カンナ"},
-      {id: "su_011", name:"サマーフェスサンディア"},
-      {id: "su_012", name:"シーサイドペガサ"},
-    ]
-
-    const halloweenData = [
-      {id: "ha_001", name:"ウィンディスイート"},
-      {id: "ha_002", name:"デビルサンディア"},
-      {id: "ha_003", name:"ネコアイスゴースト"},
-      {id: "ha_004", name:"竜騎士スカルバルス"},
-      {id: "ha_005", name:"伯爵・真田幸村"},
-      {id: "ha_006", name:"パンプキンソドム"},
-    ]
-
-    const chrismasData = [
-      {id: "ch_001", name:"雪だるまのスノーカイ"},
-      {id: "ch_002", name:"サンタのメリークウ"},
-      {id: "ch_003", name:"聖夜のシスターカッパーマイン"},
-      {id: "ch_004", name:"ねこナースキャンドル"},
-      {id: "ch_005", name:"冬天使のシシル＆コマリ"},
-      {id: "ch_006", name:"前田サンタ慶次"},
-      {id: "ch_007", name:"トナカイ娘テルン"},
-      {id: "ch_008", name:"冬将軍成田甲斐"},
-    ]
-
-    const extraData = [
-      {id: "ex_001", name:"ちびネコヴァルキリー"},
-      {id: "ex_002", name:"黒ちびネコヴァルキリー"},
-      {id: "ex_003", name:"ネコ王女"},
-      {id: "ex_004", name:"謎の傭兵トリクシー"},
-      {id: "ex_005", name:"こねこ"},
-      {id: "ex_006", name:"エージェントスタール"},
-      {id: "ex_007", name:"ニャンコオー"},
-    ]
-
-    const emptyData = [
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-    ]
-
-    // --- 2. HTML生成関数 ---
-    function generateGrid(dataList, targetId) {
-      const container = document.getElementById(targetId);
-      if (!container) return;
-
-      const html = dataList.map(char => `
-        <figure class="char-item" id="${char.id}" onclick="check(this)">
-          <img src="images/${char.id}.jpg" alt="${char.name}" loading="lazy">
-          <figcaption>${char.name}</figcaption>
-        </figure>
-      `).join('');
-
-      container.innerHTML = html;
-    }
-
-    // --- 3. ページ読み込み時の処理 (すべてのカテゴリーを命令に追加) ---
-    window.onload = function() {
-      generateGrid(dynamitesData, "list-dynamites");
-      generateGrid(basalasData, "list-basalas");
-      generateGrid(galsData, "list-gals");
-      generateGrid(doragonData, "list-doragon");
-      generateGrid(soulsData, "list-souls");
-      generateGrid(herosData, "heros");
-      generateGrid(zeusData, "zeus");
-      generateGrid(ironData, "iron");
-      generateGrid(pixysData, "pixys");
-      generateGrid(zetumeiData, "zetumei");
-      generateGrid(rugaData, "ruga");
-      generateGrid(bustersData, "busters");
-      generateGrid(chounekosaiData, "chounekosai");
-      generateGrid(gokunekosaiData, "gokunekosai");
-      generateGrid(valentineData, "valentine");
-      generateGrid(whitedayData, "whiteday");
-      generateGrid(easterData, "easter");
-      generateGrid(juneData, "june");
-      generateGrid(summerData, "summer");
-      generateGrid(halloweenData, "halloween");
-      generateGrid(chrismasData, "chrismas");
-      generateGrid(extraData, "extra");
-
-      loadProgress();
-      updateStatus();
-    };
-
-    // --- (以下、check, saveProgressなどは変更なしのため省略可能ですが、そのまま残してください) ---
-    function check(element) {
-      element.classList.toggle("owned");
-      saveProgress();
-      updateStatus();
-    }
-    function saveProgress() {
-      const ownedElements = document.querySelectorAll(".char-item.owned");
-      const ownedIds = Array.from(ownedElements).map(el => el.id);
-      localStorage.setItem("nyanko_save", JSON.stringify(ownedIds));
-    }
-    function loadProgress() {
-      const savedData = localStorage.getItem("nyanko_save");
-      if (!savedData) return;
-      const ownedIds = JSON.parse(savedData);
-      ownedIds.forEach(id => {
-        const target = document.getElementById(id);
-        if (target) target.classList.add("owned");
-      });
-    }
-    function updateStatus() {
-      const all = document.querySelectorAll(".char-item").length;
-      const owned = document.querySelectorAll(".char-item.owned").length;
-      const percent = all > 0 ? Math.floor((owned / all) * 100) : 0;
-      document.getElementById("status").textContent = percent;
-      document.getElementById("count-display").textContent = `(${owned}/${all})`;
-    }
-    function resetAll() {
-      if (confirm("チェックをすべて外しますか？")) {
-        document.querySelectorAll(".char-item.owned").forEach(item => {
-          item.classList.remove("owned");
-        });
-        localStorage.removeItem("nyanko_save");
-        updateStatus();
-      }
-    }
-  </script>
-</body>
-</html>
-  
-  <title>にゃんこ大戦争 所持チェッカー</title>
-  
-  <style>
-    /* --- 基本デザイン --- */
-    body {
-      background-color: #1a1a1a;
-      color: #ffffff;
-      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-      margin: 0;
-      padding: 0;
-      padding-bottom: 50px;
-    }
-
-    /* --- 上部固定ステータスバー --- */
-    .status-bar {
-      position: sticky;
-      top: 0;
-      background: rgba(30, 30, 30, 0.95);
-      padding: 15px;
-      border-bottom: 2px solid #ffcc00;
-      z-index: 100;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .status-info {
-      font-size: 1.1em;
-      font-weight: bold;
-    }
-
-    #status {
-      color: #ffcc00;
-      font-size: 1.4em;
-    }
-
-    /* --- リセットボタン --- */
-    .reset-btn {
-      padding: 6px 12px;
-      cursor: pointer;
-      background-color: #ff4444;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      font-weight: bold;
-      font-size: 0.8em;
-    }
-
-    /* --- カテゴリー見出し --- */
-    h2 {
-      border-left: 5px solid #ffcc00;
-      padding-left: 10px;
-      margin: 20px 10px 10px;
-      font-size: 1.1em;
-      color: #ffcc00;
-    }
-
-    /* --- グリッドレイアウト --- */
-    .char-grid {
-      display: grid;
-      /* スマホで見やすいよう最小幅を80pxに設定 */
-      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-      gap: 12px;
-      padding: 10px;
-      align-items: start;
-    }
-
-    /* --- キャラクター1体分の枠 --- */
-    .char-item {
-      margin: 0;
-      text-align: center;
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent; /* スマホのタップ色を消す */
-    }
-
-    /* --- 画像の設定 --- */
-    .char-item img {
-      width: 100%;
-      height: auto;
-      min-height: 60px; /* 読み込み前のガタつき防止 */
-      background-color: #333;
-      filter: brightness(0.3) grayscale(0.7);
-      transition: filter 0.2s, border-color 0.2s;
-      border-radius: 6px;
-      border: 2px solid #444;
-      display: block;
-    }
-
-    /* --- 名前（figcaption）のデザイン --- */
-    .char-item figcaption {
-      font-size: 10px;
-      margin-top: 5px;
-      color: #999;
-      line-height: 1.2;
-      word-break: break-all;
-    }
-
-    /* --- 所持済みの状態（ownedクラスがついた時） --- */
-    .char-item.owned img {
-      filter: brightness(1.0) grayscale(0);
-      border-color: #ffcc00;
-      box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
-    }
-
-    .char-item.owned figcaption {
-      color: #ffcc00;
-      font-weight: bold;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="status-bar">
-  <div class="status-info">
-    全キャラ所持率：<span id="status">0</span>% 
-    <span id="count-display" style="font-size: 0.8em; color: #aaa; margin-left: 5px;">(0/0)</span>
-  </div>
-  <button class="reset-btn" onclick="resetAll()">全リセット</button>
-</div>
-
-  <div class="category">
-    <h2>超激ダイナマイツ</h2>
-    <div id="list-dynamites" class="char-grid"></div>
-  </div>
-
-  <div class="category">
-    <h2>戦国武神バサラーズ</h2>
-    <div id="list-basalas" class="char-grid"></div>
-  </div>
-
- <div class="category">
-    <h2>電脳学園ギャラクシーギャルズ</h2>
-    <div id="list-gals" class="char-grid"></div>
-  </div>
-
-  <div class="category">
-    <h2>超破壊大帝ドラゴンエンペラーズ</h2>
-    <div id="list-doragon" class="char-grid"></div>
-  </div>
-  
-  <div class="category">
-    <h2>超古代勇者ウルトラソウルズ</h2>
-    <div id="list-souls" class="char-grid"></div>
-  </div>
-
-  <div class="category">
-    <h2>逆襲の英雄ダークヒーローズ</h2>
-    <div id="heros" class="char-grid"></div>
-  </div>
-
-  <div class="category">
-    <h2>究極降臨ギガントゼウス</h2>
-    <div id="zeus" class="char-grid"></div>
-  </div>
-  
-  <div class="category">
-    <h2>革命軍隊アイアンウォーズ</h2>
-    <div id="iron" class="char-grid"></div>
-  </div>
-  
-  <div class="category">
-    <h2>大精霊エレメンタルピクシーズ</h2>
-    <div id="pixys" class="char-grid"></div>
-  </div>
-  
-  <div class="category">
-    <h2>絶命美少女ギャルズモンスターズ</h2>
-    <div id="zetumei" class="char-grid"></div>
-  </div>
-  
-  <div class="category">
-    <h2>伝説のネコルガ族</h2>
-    <div id="ruga" class="char-grid"></div>
-  </div>
-  
-  <div class="category">
-    <h2>バスターズ</h2>
-    <div id="busters" class="char-grid"></div>
-  </div>
-   
-  <div class="category">
-    <h2>超ネコ祭</h2>
-    <div id="chounekosai" class="char-grid"></div>
-  </div>
-   
-  <div class="category">
-    <h2>極ネコ祭</h2>
-    <div id="gokunekosai" class="char-grid"></div>
-  </div>
-     
-  <div class="category">
-    <h2>バレンタインギャルズ</h2>
-    <div id="valentine" class="char-grid"></div>
-  </div>
-   
-  <div class="category">
-    <h2>俺たちが主役ホワイトデー</h2>
-    <div id="whiteday" class="char-grid"></div>
-  </div>
-     
-  <div class="category">
-    <h2>イースターカーニバル</h2>
-    <div id="easter" class="char-grid"></div>
-  </div>
-   
-  <div class="category">
-    <h2>ジューンブライド</h2>
-    <div id="june" class="char-grid"></div>
-  </div>
-     
-  <div class="category">
-    <h2>サマーガールズ</h2>
-    <div id="summer" class="char-grid"></div>
-  </div>
-   
-  <div class="category">
-    <h2>ハロウィン</h2>
-    <div id="halloween" class="char-grid"></div>
-  </div>
-     
-  <div class="category">
-    <h2>クリスマスギャルズ</h2>
-    <div id="chrismas" class="char-grid"></div>
-  </div>
-   
-  <div extraclass="category">
-    <h2>その他</h2>
-    <div id="extra" class="char-grid"></div>
-  </div>
-  
-  <script>
- // --- 1. データリスト (DateをDataに修正し、重複エラーを回避) ---
-    const dynamitesData = [
-      { id: "d_001_icecat", name: "ネコアイス" },
-      { id: "d_002_catmachine", name: "ネコマシン" },
-      { id: "d_003_oninyanma", name: "鬼にゃんま" },
-      { id: "d_004_catchevalier", name: "ネコシュバリエ" },
-      { id: "d_005_catbaby", name: "ねこベビー" },
-      { id: "d_006_nersecat", name: "ねこナース" },
-      { id: "d_007_catquest", name: "ネコクエスト" },
-      { id: "d_008_lasvors", name: "ラスヴォ―ス" },
-      { id: "d_009_satoru", name: "召喚少年サトル" },
-      { id: "d_010_tengucat", name: "ネコ天狗" },
-      { id: "d_011_catdynazaurus", name: "ネコダイナザウルス" }
-    ];
-
-    const basalasData = [
-      { id: "b_001_sanada", name: "真田幸村" },
-      { id: "b_002_maeda", name: "前田慶次" },
-      { id: "b_003_oda", name: "織田信長" },
-      { id: "b_004_date", name: "伊達政宗" },
-      { id: "b_005_takeda", name: "武田信玄" },
-      { id: "b_006_uesugi", name: "上杉謙信" },
-      { id: "b_007_imagawa", name: "今川義元" },
-      { id: "b_008_narita", name: "成田甲斐" },
-      { id: "b_009_amakusa", name: "天草四郎" },
-      { id: "b_010_hattori", name: "服部半蔵" },
-      { id: "b_011_aketi", name: "明智光秀" },
-      { id: "b_012_huuma", name: "風魔小太郎" }
-    ];
-
-    const galsData = [
-      { id: "g_001", name: "風神のウィンディ"},
-      { id: "g_002", name: "雷神のサンディア"},
-      { id: "g_003", name: "猿帝のクウ"},
-      { id: "g_004", name: "召し豚のカイ"},
-      { id: "g_005", name: "宝杖のカッパーマイン"}, // カンマを1つに修正
-      { id: "g_006", name: "冥界のカリファ"},
-      { id: "g_007", name: "双掌星のシシコ＆コマリ"},
-      { id: "g_008", name: "英雄令嬢メルシュ"},
-      { id: "g_009", name: "妖賢女リリン"},
-      { id: "g_010", name: "狩猟娘テルン"},
-      { id: "g_011", name: "鉄籠のペガサ"},
-      { id: "g_012", name: "獅子番長ラクレス"}
-    ];
-
-    const doragonData = [
-      { id: "e_001", name: "地龍ソドム"},
-      { id: "e_002", name: "聖龍メギドラ"},
-      { id: "e_003", name: "竜騎士バルス"},
-      { id: "e_004", name: "神龍かむくら"},
-      { id: "e_005", name: "竜戦機ライデン"},
-      { id: "e_006", name: "覇龍ディオラムス"},
-      { id: "e_007", name: "古龍ガングリオン"},
-      { id: "e_008", name: "角龍グラディオス"},
-      { id: "e_009", name: "邪龍ヘヴィジャーク"},
-      { id: "e_010", name: "海龍ダライアサン"},
-      { id: "e_011", name: "砲龍ガンドロス"}
-    ];
-
-    const soulsData = [
-      { id: "u_001", name: "うらしまタロウ"},
-      { id: "u_002", name: "ツルの恩返し"},
-      { id: "u_003", name: "ももたろう"},
-      { id: "u_004", name: "かさじぞう"},
-      { id: "u_005", name: "かぐやひめ"},
-      { id: "u_006", name: "カチカチヤマンズ"},
-      { id: "u_007", name: "さるかに合戦"},
-      { id: "u_008", name: "きんたろう"},
-      { id: "u_009", name: "舌切りすずめ"},
-      { id: "u_010", name: "いっすん法師"},
-      { id: "u_011", name: "花咲かじいさん"}
-    ];
-    
-    const herosData = [
-      { id: "h_001", name: "アキラ"},
-      { id: "h_002", name: "西園寺メカ子"},
-      { id: "h_003", name: "キャットマンダディ"},
-      { id: "h_004", name: "ホワイトラビット"},
-      { id: "h_005", name: "呪術師デスピエロ"},
-      { id: "h_006", name: "天誅ハヤブサ"},
-      { id: "h_007", name: "亡者探偵ヴィグラー"},
-      { id: "h_008", name: "マッドシューター・サキ"},
-      { id: "h_009", name: "白騎士キュクプロス"},
-      { id: "h_010", name: "サンダージャック"},
-      { id: "h_011", name: "特命機動アクセル"}
-    ];
-
-    const zeusData = [
-      { id: "z_001", name: "天空神ゼウス"},
-      { id: "z_002", name: "守護神アヌビス"},
-      { id: "z_003", name: "美女神アフロディーテ"},
-      { id: "z_004", name: "太陽神アマテラス"},
-      { id: "z_005", name: "繫栄神ガネーシャ"},
-      { id: "z_006", name: "海王神ポセイドン"},
-      { id: "z_007", name: "時空神クロノス"},
-      { id: "z_008", name: "冥界神ハデス"},
-      { id: "z_009", name: "堕天神ルシファー"},
-      { id: "z_010", name: "光翼神イシス"},
-      { id: "z_011", name: "韋駄天スカンダ"}
-    ];
-
-    const ironData = [
-      { id: "i_001", name: "帝国陸軍カタパルズ"},
-      { id: "i_002", name: "古代軍船ガレーズ"},
-      { id: "i_003", name: "飛空襲撃ボンバーズ"},
-      { id: "i_004", name: "観測兵器ガリレオ"},
-      { id: "i_005", name: "温泉天国テルマエ"},
-      { id: "i_006", name: "空中商会コロンブス"},
-      { id: "i_007", name: "超竜戦機デス・トロイ"},
-      { id: "i_008", name: "周遊芸団カルーセルズ"},
-      { id: "i_009", name: "建築兵団スフィンクス"},
-      { id: "i_010", name: "曲射砲台ランチャーズ"}
-    ];
-
-    const pixysData = [
-      { id: "p_001", name: "火の精霊メララ"},
-      { id: "p_002", name: "水の精霊ミズリィ"},
-      { id: "p_003", name: "風の精霊エアル"},
-      { id: "p_004", name: "雷の精霊ボルト"},
-      { id: "p_005", name: "石の精霊ゴロー"},
-      { id: "p_006", name: "闇の精霊ヤミィ"},
-      { id: "p_007", name: "氷の精霊フリズ"},
-      { id: "p_008", name: "鉄の精霊カッチン"},
-      { id: "p_009", name: "樹の精霊コモリ"}
-    ];
-
-    const zetumeiData = [
-      { id: "m_001", name: "狐娘ヒメユリ"},
-      { id: "m_002", name: "人魚娘ルリィ"},
-      { id: "m_003", name: "ミイラ娘レイカ"},
-      { id: "m_004", name: "狼娘ディル"},
-      { id: "m_005", name: "ゾンビ娘ヴェルヴェーヌ"},
-      { id: "m_006", name: "冒険家カンナ"},
-      { id: "m_007", name: "女神ベガ"},
-      { id: "m_008", name: "忍者娘トモエ"},
-      { id: "m_009", name: "魔導士シドミ"}
-    ];
-
-    const rugaData = [
-      { id: "r_001", name: "ネコルガ"},
-      { id: "r_002", name: "アシルガ"},
-      { id: "r_003", name: "クビルガ"},
-      { id: "r_004", name: "テコルガ"},
-      { id: "r_005", name: "バララガ"},
-      { id: "r_006", name: "トゲルガ"},
-      { id: "r_007", name: "ノビルガ"},
-      { id: "r_008", name: "オイルガ"},
-      { id: "r_009", name: "オコルガ"},
-      { id: "r_010", name: "カオルガ"},
-      { id: "r_011", name: "マモルガ"}
-    ];
-
-    const bustersData = [
-      {id: "bs_001", name:"猫飯拳パイパイ"},
-      {id: "bs_002", name:"閃雷機兵レイ"},
-      {id: "bs_003", name:"風隼さくら"},
-      {id: "bs_004", name:"地獄警官エマ"},
-      {id: "bs_005", name:"光の女神シリウス"},
-    ]
-
-    const chounekosaiData = [
-      {id: "cn_001", name:"幼獣ガオ"},
-      {id: "cn_002", name:"巫女姫ミタマ"},
-      {id: "cn_003", name:"幼傑ダルターニャ"},
-      {id: "cn_004", name:"厄災の子キャスリィ"},
-      {id: "cn_005", name:"幼獣ガル"},
-      {id: "cn_006", name:"踊り子イズ"},
-      {id: "cn_007", name:"運命の子フォノ"},
-      {id: "cn_008", name:"幼天女ルーナ"},
-      {id: "cn_009", name:"幼騎士ルーノ"},
-    ]
-
-    const gokunekosaiData = [
-      {id: "gn_001", name:"黒獣ガオウ"},
-      {id: "gn_002", name:"黒無垢のミタマ"},
-      {id: "gn_003", name:"影傑ダルターニャ"},
-      {id: "gn_004", name:"禍根の魔女キャスリィ"},
-      {id: "gn_005", name:"黒獣ガルディアン"},
-      {id: "gn_006", name:"悲嘆の踊り子イズ"},
-      {id: "gn_007", name:"非命の王フォノウ"},
-      {id: "gn_008", name:"冥護の天女ルナーシャ"},
-      {id: "gn_009", name:"孤月の騎士ルーノス"}
-    ]
-
-    const valentineData = [
-      {id: "va_001", name:"恋女神ショコラディーテ"},
-      {id: "va_002", name:"初恋令嬢メルシュ"},
-      {id: "va_003", name:"白い恋人メカ子"},
-    ]
-
-    const whitedayData = [
-      {id: "wh_001", name:"恋番長・鬼にゃんま"},
-      {id: "wh_002", name:"白執事探偵ヴィグラー"},
-      {id: "wh_003", name:"ネコアイスホワイトスター"},
-      {id: "wh_004", name:"マジシャンキャットマン"},
-    ]
-
- const easterData = [
-      {id: "ea_001", name:"上杉謙信・春"},
-      {id: "ea_002", name:"道化師エッグダック"},
-      {id: "ea_003", name:"春龍かむくら"},
-      {id: "ea_004", name:"決闘少年ラビットサトル"},
-      {id: "ea_005", name:"スプリングカリファ"},
-    ]
-
-    const juneData = [
-      {id: "ju_001", name:"祝福神クロノス"},
-      {id: "ju_002", name:"バララガの誓い"},
-      {id: "ju_003", name:"ネコケーキマシン挙式"},
-    ]
-
-    const summerData = [
-      {id: "su_001", name:"トロピカルカリファ"},
-      {id: "su_002", name:"真夏のホワイトラビット"},
-      {id: "su_003", name:"常夏の果実カイ"},
-      {id: "su_004", name:"灼熱のビーチクウ"},
-      {id: "su_005", name:"潮風のセーラーカッパーマイン"},
-      {id: "su_006", name:"アクアシューターサキ"},
-      {id: "su_007", name:"ネコルガの夏"},
-      {id: "su_008", name:"渚のかぐや姫"},
-      {id: "su_009", name:"ナイトビーチリリン"},
-      {id: "su_010", name:"波打ち際の冒険家カンナ"},
-      {id: "su_011", name:"サマーフェスサンディア"},
-      {id: "su_012", name:"シーサイドペガサ"},
-    ]
-
-    const halloweenData = [
-      {id: "ha_001", name:"ウィンディスイート"},
-      {id: "ha_002", name:"デビルサンディア"},
-      {id: "ha_003", name:"ネコアイスゴースト"},
-      {id: "ha_004", name:"竜騎士スカルバルス"},
-      {id: "ha_005", name:"伯爵・真田幸村"},
-      {id: "ha_006", name:"パンプキンソドム"},
-    ]
-
-    const chrismasData = [
-      {id: "ch_001", name:"雪だるまのスノーカイ"},
-      {id: "ch_002", name:"サンタのメリークウ"},
-      {id: "ch_003", name:"聖夜のシスターカッパーマイン"},
-      {id: "ch_004", name:"ねこナースキャンドル"},
-      {id: "ch_005", name:"冬天使のシシル＆コマリ"},
-      {id: "ch_006", name:"前田サンタ慶次"},
-      {id: "ch_007", name:"トナカイ娘テルン"},
-      {id: "ch_008", name:"冬将軍成田甲斐"},
-    ]
-
-    const extraData = [
-      {id: "ex_001", name:"ちびネコヴァルキリー"},
-      {id: "ex_002", name:"黒ちびネコヴァルキリー"},
-      {id: "ex_003", name:"ネコ王女"},
-      {id: "ex_004", name:"謎の傭兵トリクシー"},
-      {id: "ex_005", name:"こねこ"},
-      {id: "ex_006", name:"エージェントスタール"},
-      {id: "ex_007", name:"ニャンコオー"},
-    ]
-
-    const emptyData = [
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-      {id: "_00", name:""},
-    ]
-
-    // --- 2. HTML生成関数 ---
-    function generateGrid(dataList, targetId) {
-      const container = document.getElementById(targetId);
-      if (!container) return;
-
-      const html = dataList.map(char => `
-        <figure class="char-item" id="${char.id}" onclick="check(this)">
-          <img src="images/${char.id}.jpg" alt="${char.name}" loading="lazy">
-          <figcaption>${char.name}</figcaption>
-        </figure>
-      `).join('');
-
-      container.innerHTML = html;
-    }
-
-    // --- 3. ページ読み込み時の処理 (すべてのカテゴリーを命令に追加) ---
-    window.onload = function() {
-      generateGrid(dynamitesData, "list-dynamites");
-      generateGrid(basalasData, "list-basalas");
-      generateGrid(galsData, "list-gals");
-      generateGrid(doragonData, "list-doragon");
-      generateGrid(soulsData, "list-souls");
-      generateGrid(herosData, "heros");
-      generateGrid(zeusData, "zeus");
-      generateGrid(ironData, "iron");
-      generateGrid(pixysData, "pixys");
-      generateGrid(zetumeiData, "zetumei");
-      generateGrid(rugaData, "ruga");
-      generateGrid(bustersData, "busters");
-      generateGrid(chounekosaiData, "chounekosai");
-      generateGrid(gokunekosaiData, "gokunekosai");
-      generateGrid(valentineData, "valentine");
-      generateGrid(whitedayData, "whiteday");
-      generateGrid(easterData, "easter");
-      generateGrid(juneData, "june");
-      generateGrid(summerData, "summer");
-      generateGrid(halloweenData, "halloween");
-      generateGrid(chrismasData, "chrismas");
-      generateGrid(extraData, "extra");
-
-      loadProgress();
-      updateStatus();
-    };
-
-    // --- (以下、check, saveProgressなどは変更なしのため省略可能ですが、そのまま残してください) ---
     function check(element) {
       element.classList.toggle("owned");
       saveProgress();
