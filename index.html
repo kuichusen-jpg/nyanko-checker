@@ -181,7 +181,7 @@
           { name: "ネコアイスクイーン", img: "images/d_001_icecat_2.jpg" },
           { name: "ネコアイスクリスタル", img: "images/d_001_icecat_3.jpg" }
         ],
-        currentForm: -1 // 初期状態は未所持（-1）からスタート
+        currentForm: -1
       },
       { 
         id: "d_002_catmachine", 
@@ -190,8 +190,8 @@
           { name: "ネコマシン・破", img: "images/d_002_catmachine_2.jpg" },
           { name: "ネコマシン・滅", img: "images/d_002_catmachine_3.jpg" }
         ],
-        currentForm: -1 // 初期状態は未所持（-1）からスタート
-      }, // ← 【修正】カンマを追加しました
+        currentForm: -1
+      },
       { id: "d_003_oninyanma", name: "鬼にゃんま" },
       { id: "d_004_catchevalier", name: "ネコシュバリエ" },
       { id: "d_005_catbaby", name: "ねこベビー" },
@@ -451,16 +451,19 @@
       juneData, summerData, halloweenData, chrismasData, extraData
     ];
 
-    // --- 2. HTML生成関数 ---
+    // --- 2. HTML生成関数 【修正箇所】 ---
     function generateGrid(dataList, targetId) {
       const container = document.getElementById(targetId);
       if (!container) return;
 
       const html = dataList.map(char => {
+        // forms配列がある場合はその最初の要素の情報を、ない場合は直下の情報を設定する
         const initialName = char.forms ? char.forms[0].name : char.name;
+        const initialImg = char.forms ? char.forms[0].img : `images/${char.id}.jpg`;
+        
         return `
           <figure class="char-item" id="${char.id}" onclick="check(this)">
-            <img src="images/${char.id}.jpg" alt="${initialName}" class="char-img" loading="lazy">
+            <img src="${initialImg}" alt="${initialName}" class="char-img" loading="lazy">
             <figcaption class="char-name">${initialName}</figcaption>
           </figure>
         `;
