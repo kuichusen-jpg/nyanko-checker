@@ -117,6 +117,27 @@
       color: #ffcc00;
       font-weight: bold;
     }
+    /* --- 形態切り替え時のアニメーション（回転） --- */
+
+/* アニメーションが実行されているときの動き */
+.form-changing {
+  animation: rotate-change 0.4s ease-in-out; /* 0.4秒でクルッと回す */
+}
+
+@keyframes rotate-change {
+  0% {
+    transform: rotateY(0deg); /* 正面 */
+    opacity: 1;
+  }
+  50% {
+    transform: rotateY(90deg); /* 真横（ここで画像と名前を切り替える） */
+    opacity: 0.8;
+  }
+  100% {
+    transform: rotateY(0deg); /* 正面に戻る */
+    opacity: 1;
+  }
+}
   </style>
 </head>
 <body>
@@ -506,22 +527,34 @@
     }
 
     // キャラクターの表示（画像、名前、明るさ）を状態に合わせて更新する関数
+   // キャラクターの表示（画像、名前、明るさ）を状態に合わせて更新する関数
     function updateElementVisual(element, targetChar) {
       if (!targetChar.forms) return;
 
-      if (targetChar.currentForm === undefined || targetChar.currentForm === -1) {
-        // 未所持状態
-        element.classList.remove("owned");
-        const firstForm = targetChar.forms[0];
-        element.querySelector('.char-img').src = firstForm.img;
-        element.querySelector('.char-name').textContent = firstForm.name;
-      } else {
-        // 所持状態（各形態）
-        element.classList.add("owned");
-        const currentForm = targetChar.forms[targetChar.currentForm];
-        element.querySelector('.char-img').src = currentForm.img;
-        element.querySelector('.char-name').textContent = currentForm.name;
-      }
+      // 回転アニメーション（0.4秒）を開始
+      element.classList.add("form-changing");
+      
+      // アニメーションの中間（0.2秒後：真横を向いたタイミング）で画像と名前を切り替える
+      setTimeout(() => {
+        if (targetChar.currentForm === undefined || targetChar.currentForm === -1) {
+          // 未所持状態
+          element.classList.remove("owned");
+          const firstForm = targetChar.forms[0];
+          element.querySelector('.char-img').src = firstForm.img;
+          element.querySelector('.char-name').textContent = firstForm.name;
+        } else {
+          // 所持状態（各形態）
+          element.classList.add("owned");
+          const currentForm = targetChar.forms[targetChar.currentForm];
+          element.querySelector('.char-img').src = currentForm.img;
+          element.querySelector('.char-name').textContent = currentForm.name;
+        }
+      }, 200); // 400msのアニメーションのちょうど真ん中
+
+      // アニメーション（0.4秒）が終わったらクラスを外す
+      setTimeout(() => {
+        element.classList.remove("form-changing");
+      }, 400);
     }
 
     // --- 5. 保存と復元（形態データにも対応） ---
