@@ -154,15 +154,15 @@
 
 <script>
     // --- 1. データリスト ---
-    // ※プラン1対応のため、テストとして「ネコアイス」だけ形態データ（forms）を持たせています。
-    // ※他のキャラも、準備ができたらネコアイスと同じ形式（forms: [...]）に書き換えていけば動きます。
+    // ※テストとして「ネコアイス」だけ形態データ（forms）を持たせています。
+    // ※他のキャラも準備ができたら forms の形式に書き換えていけば動きます。
     const dynamitesData = [
       { 
         id: "d_001_icecat", 
         forms: [
           { name: "ネコアイス", img: "images/d_001_icecat.jpg" },
-          { name: "ネコアイスクイーン", img: "images/d_001_icecat_2.jpg" },
-          { name: "ネコアイスクリスタル", img: "images/d_001_icecat_3.jpg" }
+          { name: "ネコアイスクリスタル", img: "images/d_001_icecat_2.jpg" },
+          { name: "ネコアイスワン", img: "images/d_001_icecat_3.jpg" }
         ],
         currentForm: 0 
       },
@@ -419,7 +419,7 @@
       {id: "ex_007", name:"ニャンコオー"},
     ];
 
-    // すべてのデータグループをまとめた配列（検索用）
+    // 【修正：位置を変更】 すべてのデータが出揃った後に配列にまとめる
     const allDataGroups = [
       dynamitesData, basalasData, galsData, doragonData, soulsData, herosData,
       zeusData, ironData, pixysData, zetumeiData, rugaData, bustersData,
@@ -433,7 +433,6 @@
       if (!container) return;
 
       const html = dataList.map(char => {
-        // formsがある場合は最初の形態の名前、ない場合は通常のnameを使う
         const initialName = char.forms ? char.forms[0].name : char.name;
         return `
           <figure class="char-item" id="${char.id}" onclick="check(this)">
@@ -475,97 +474,104 @@
       updateStatus();
     };
 
-  // --- 4. クリック時の処理（未所持 ➔ 第1 ➔ 第2 ➔ 第3 ➔ 未所持 のローテーション） ---
+    // --- 4. クリック時の処理（4ステップローテーション） ---
     function check(element) {
       const charId = element.id;
       let targetChar = null;
 
-      // 全データグループからクリックされたキャラのデータを特定する
       for (const group of allDataGroups) {
         targetChar = group.find(c => c.id === charId);
         if (targetChar) break;
       }
 
-      // 形態データ（forms）が存在する場合の処理
       if (targetChar && targetChar.forms) {
-        // 現在の状態（未所持なら -1、第1形態なら 0、第2形態なら 1...）
-        // 初期状態（currentFormが未定義）の場合は -1（未所持）からスタートさせる
         if (targetChar.currentForm === undefined) {
           targetChar.currentForm = -1;
         }
 
-        // 状態を1つ進める（-1 ➔ 0 ➔ 1 ➔ 2 ➔ -1 ...）
-        // ※forms.length が 3 の場合、最大インデックスは 2。それを超えたら -1 に戻る
         targetChar.currentForm++;
         if (targetChar.currentForm >= targetChar.forms.length) {
-          targetChar.currentForm = -1; // 未所持に戻る
+          targetChar.currentForm = -1; 
         }
 
-        if (targetChar.currentForm === -1) {
-          // 【未所持（暗い状態）に戻す処理】
-          element.classList.remove("owned");
-          
-          // 表示は第1形態（最初の画像と名前）に戻しておく
-          const firstForm = targetChar.forms[0];
-          element.querySelector('.char-img').src = firstForm.img;
-          element.querySelector('.char-name').textContent = firstForm.name;
-        } else {
-          // 【所持（明るい状態）で各形態を切り替える処理】
-          element.classList.add("owned");
-          
-          const nextForm = targetChar.forms[targetChar.currentForm];
-          element.querySelector('.char-img').src = nextForm.img;
-          element.querySelector('.char-name').textContent = nextForm.name;
-        }
+        // 画面上の画像・名前の書き換え処理
+        updateElementVisual(element, targetChar);
       } else {
-        // 形態データ（forms）がまだない従来のキャラは、今まで通りのシンプルなON/OFF
+        // 形態データがないキャラはシンプルなON/OFF
         element.classList.toggle("owned");
       }
 
-      // 進捗の保存と上部ステータスバーの更新
       saveProgress();
       updateStatus();
     }
 
-      // 全データグループからクリックされたキャラのデータを特定する
-      for (const group of allDataGroups) {
-        targetChar = group.find(c => c.id === charId);
-        if (targetChar) break;
+    // キャラクターの表示（画像、名前、明るさ）を状態に合わせて更新する関数
+    function updateElementVisual(element, targetChar) {
+      if (!targetChar.forms) return;
+
+      if (targetChar.currentForm === undefined || targetChar.currentForm === -1) {
+        // 未所持状態
+        element.classList.remove("owned");
+        const firstForm = targetChar.forms[0];
+        element.querySelector('.char-img').src = firstForm.img;
+        element.querySelector('.char-name').textContent = firstForm.name;
+      } else {
+        // 所持状態（各形態）
+        element.classList.add("owned");
+        const currentForm = targetChar.forms[targetChar.currentForm];
+        element.querySelector('.char-img').src = currentForm.img;
+        element.querySelector('.char-name').textContent = currentForm.name;
       }
-
-      // 形態データ（forms）が存在する場合のみ、形態を切り替える
-      if (targetChar && targetChar.forms) {
-        // 次の形態番号に進める（ループ処理）
-        targetChar.currentForm = (targetChar.currentForm + 1) % targetChar.forms.length;
-        const nextForm = targetChar.forms[targetChar.currentForm];
-
-        // 画面上の画像と名前を書き換える
-        element.querySelector('.char-img').src = nextForm.img;
-        element.querySelector('.char-name').textContent = nextForm.name;
-      }
-
-      // 【所持チェックの仕様について】
-      // 今は「クリックするたびにownedクラスが切り替わる」状態です。
-      // ※「第3形態の時だけownedにする」など、挙動を細かく調整したい場合は後から変更可能です。
-      element.classList.toggle("owned");
-      saveProgress();
-      updateStatus();
     }
 
+    // --- 5. 保存と復元（形態データにも対応） ---
     function saveProgress() {
-      const ownedElements = document.querySelectorAll(".char-item.owned");
-      const ownedIds = Array.from(ownedElements).map(el => el.id);
-      localStorage.setItem("nyanko_save", JSON.stringify(ownedIds));
+      const progress = {};
+      
+      for (const group of allDataGroups) {
+        for (const char of group) {
+          // formsがあるキャラは currentForm（-1〜2）の状態を保存
+          if (char.forms) {
+            if (char.currentForm !== undefined && char.currentForm !== -1) {
+              progress[char.id] = char.currentForm;
+            }
+          } else {
+            // formsがないキャラは、画面上のownedクラスを基準に簡易保存
+            const el = document.getElementById(char.id);
+            if (el && el.classList.contains("owned")) {
+              progress[char.id] = true;
+            }
+          }
+        }
+      }
+      localStorage.setItem("nyanko_save_v2", JSON.stringify(progress));
     }
 
     function loadProgress() {
-      const savedData = localStorage.getItem("nyanko_save");
+      const savedData = localStorage.getItem("nyanko_save_v2");
       if (!savedData) return;
-      const ownedIds = JSON.parse(savedData);
-      ownedIds.forEach(id => {
-        const target = document.getElementById(id);
-        if (target) target.classList.add("owned");
-      });
+      
+      const progress = JSON.parse(savedData);
+      
+      for (const group of allDataGroups) {
+        for (const char of group) {
+          if (progress[char.id] !== undefined) {
+            const el = document.getElementById(char.id);
+            if (!el) continue;
+
+            if (char.forms) {
+              // 形態データがあるキャラの状態を復元
+              char.currentForm = progress[char.id];
+              updateElementVisual(el, char);
+            } else {
+              // 形態データがないキャラの所持を復元
+              if (progress[char.id] === true) {
+                el.classList.add("owned");
+              }
+            }
+          }
+        }
+      }
     }
 
     function updateStatus() {
@@ -578,10 +584,19 @@
 
     function resetAll() {
       if (confirm("チェックをすべて外しますか？")) {
-        document.querySelectorAll(".char-item.owned").forEach(item => {
-          item.classList.remove("owned");
-        });
-        localStorage.removeItem("nyanko_save");
+        for (const group of allDataGroups) {
+          for (const char of group) {
+            char.currentForm = -1;
+            const el = document.getElementById(char.id);
+            if (el) {
+              el.classList.remove("owned");
+              if (char.forms) {
+                updateElementVisual(el, char);
+              }
+            }
+          }
+        }
+        localStorage.removeItem("nyanko_save_v2");
         updateStatus();
       }
     }
