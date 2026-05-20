@@ -152,10 +152,20 @@
   <div class="category"><h2>クリスマスギャルズ</h2><div id="chrismas" class="char-grid"></div></div>
   <div class="category"><h2>その他</h2><div id="extra" class="char-grid"></div></div>
 
-  <script>
+<script>
     // --- 1. データリスト ---
+    // ※プラン1対応のため、テストとして「ネコアイス」だけ形態データ（forms）を持たせています。
+    // ※他のキャラも、準備ができたらネコアイスと同じ形式（forms: [...]）に書き換えていけば動きます。
     const dynamitesData = [
-      { id: "d_001_icecat", name: "ネコアイス" },
+      { 
+        id: "d_001_icecat", 
+        forms: [
+          { name: "ネコアイス", img: "images/d_001_icecat.jpg" },
+          { name: "ネコアイスクリスタル", img: "images/d_001_icecat_2.jpg" },
+          { name: "ネコアイスワン", img: "images/d_001_icecat_3.jpg" }
+        ],
+        currentForm: 0 
+      },
       { id: "d_002_catmachine", name: "ネコマシン" },
       { id: "d_003_oninyanma", name: "鬼にゃんま" },
       { id: "d_004_catchevalier", name: "ネコシュバリエ" },
@@ -409,17 +419,29 @@
       {id: "ex_007", name:"ニャンコオー"},
     ];
 
+    // すべてのデータグループをまとめた配列（検索用）
+    const allDataGroups = [
+      dynamitesData, basalasData, galsData, doragonData, soulsData, herosData,
+      zeusData, ironData, pixysData, zetumeiData, rugaData, bustersData,
+      chounekosaiData, gokunekosaiData, valentineData, whitedayData, easterData,
+      juneData, summerData, halloweenData, chrismasData, extraData
+    ];
+
     // --- 2. HTML生成関数 ---
     function generateGrid(dataList, targetId) {
       const container = document.getElementById(targetId);
       if (!container) return;
 
-      const html = dataList.map(char => `
-        <figure class="char-item" id="${char.id}" onclick="check(this)">
-          <img src="images/${char.id}.jpg" alt="${char.name}" loading="lazy">
-          <figcaption>${char.name}</figcaption>
-        </figure>
-      `).join('');
+      const html = dataList.map(char => {
+        // formsがある場合は最初の形態の名前、ない場合は通常のnameを使う
+        const initialName = char.forms ? char.forms[0].name : char.name;
+        return `
+          <figure class="char-item" id="${char.id}" onclick="check(this)">
+            <img src="images/${char.id}.jpg" alt="${initialName}" class="char-img" loading="lazy">
+            <figcaption class="char-name">${initialName}</figcaption>
+          </figure>
+        `;
+      }).join('');
 
       container.innerHTML = html;
     }
@@ -453,16 +475,42 @@
       updateStatus();
     };
 
+    // --- 4. クリック時の処理（形態切り替え＆所持チェック） ---
     function check(element) {
+      const charId = element.id;
+      let targetChar = null;
+
+      // 全データグループからクリックされたキャラのデータを特定する
+      for (const group of allDataGroups) {
+        targetChar = group.find(c => c.id === charId);
+        if (targetChar) break;
+      }
+
+      // 形態データ（forms）が存在する場合のみ、形態を切り替える
+      if (targetChar && targetChar.forms) {
+        // 次の形態番号に進める（ループ処理）
+        targetChar.currentForm = (targetChar.currentForm + 1) % targetChar.forms.length;
+        const nextForm = targetChar.forms[targetChar.currentForm];
+
+        // 画面上の画像と名前を書き換える
+        element.querySelector('.char-img').src = nextForm.img;
+        element.querySelector('.char-name').textContent = nextForm.name;
+      }
+
+      // 【所持チェックの仕様について】
+      // 今は「クリックするたびにownedクラスが切り替わる」状態です。
+      // ※「第3形態の時だけownedにする」など、挙動を細かく調整したい場合は後から変更可能です。
       element.classList.toggle("owned");
       saveProgress();
       updateStatus();
     }
+
     function saveProgress() {
       const ownedElements = document.querySelectorAll(".char-item.owned");
       const ownedIds = Array.from(ownedElements).map(el => el.id);
       localStorage.setItem("nyanko_save", JSON.stringify(ownedIds));
     }
+
     function loadProgress() {
       const savedData = localStorage.getItem("nyanko_save");
       if (!savedData) return;
@@ -472,6 +520,7 @@
         if (target) target.classList.add("owned");
       });
     }
+
     function updateStatus() {
       const all = document.querySelectorAll(".char-item").length;
       const owned = document.querySelectorAll(".char-item.owned").length;
@@ -479,6 +528,7 @@
       document.getElementById("status").textContent = percent;
       document.getElementById("count-display").textContent = `(${owned}/${all})`;
     }
+
     function resetAll() {
       if (confirm("チェックをすべて外しますか？")) {
         document.querySelectorAll(".char-item.owned").forEach(item => {
