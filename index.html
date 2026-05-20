@@ -475,10 +475,57 @@
       updateStatus();
     };
 
-    // --- 4. クリック時の処理（形態切り替え＆所持チェック） ---
+  // --- 4. クリック時の処理（未所持 ➔ 第1 ➔ 第2 ➔ 第3 ➔ 未所持 のローテーション） ---
     function check(element) {
       const charId = element.id;
       let targetChar = null;
+
+      // 全データグループからクリックされたキャラのデータを特定する
+      for (const group of allDataGroups) {
+        targetChar = group.find(c => c.id === charId);
+        if (targetChar) break;
+      }
+
+      // 形態データ（forms）が存在する場合の処理
+      if (targetChar && targetChar.forms) {
+        // 現在の状態（未所持なら -1、第1形態なら 0、第2形態なら 1...）
+        // 初期状態（currentFormが未定義）の場合は -1（未所持）からスタートさせる
+        if (targetChar.currentForm === undefined) {
+          targetChar.currentForm = -1;
+        }
+
+        // 状態を1つ進める（-1 ➔ 0 ➔ 1 ➔ 2 ➔ -1 ...）
+        // ※forms.length が 3 の場合、最大インデックスは 2。それを超えたら -1 に戻る
+        targetChar.currentForm++;
+        if (targetChar.currentForm >= targetChar.forms.length) {
+          targetChar.currentForm = -1; // 未所持に戻る
+        }
+
+        if (targetChar.currentForm === -1) {
+          // 【未所持（暗い状態）に戻す処理】
+          element.classList.remove("owned");
+          
+          // 表示は第1形態（最初の画像と名前）に戻しておく
+          const firstForm = targetChar.forms[0];
+          element.querySelector('.char-img').src = firstForm.img;
+          element.querySelector('.char-name').textContent = firstForm.name;
+        } else {
+          // 【所持（明るい状態）で各形態を切り替える処理】
+          element.classList.add("owned");
+          
+          const nextForm = targetChar.forms[targetChar.currentForm];
+          element.querySelector('.char-img').src = nextForm.img;
+          element.querySelector('.char-name').textContent = nextForm.name;
+        }
+      } else {
+        // 形態データ（forms）がまだない従来のキャラは、今まで通りのシンプルなON/OFF
+        element.classList.toggle("owned");
+      }
+
+      // 進捗の保存と上部ステータスバーの更新
+      saveProgress();
+      updateStatus();
+    }
 
       // 全データグループからクリックされたキャラのデータを特定する
       for (const group of allDataGroups) {
