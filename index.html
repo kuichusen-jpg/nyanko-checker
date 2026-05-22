@@ -174,35 +174,106 @@
   <script>
     // --- 1. データリスト ---
     const dynamitesData = [
-      { 
-        id: "d_001_icecat", 
-        forms: [
-          { name: "ネコアイス", img: "images/d_001_icecat.jpg" },
-          { name: "ネコアイスクイーン", img: "images/d_001_icecat_2.jpg" },
-          { name: "ネコアイスクリスタル", img: "images/d_001_icecat_3.jpg" }
-        ],
-        currentForm: -1
-      },
-      { 
-        id: "d_002_catmachine", 
-        forms: [
-          { name: "ネコマシン", img: "images/d_002_catmachine.jpg" },
-          { name: "ネコマシン・破", img: "images/d_002_catmachine_2.jpg" },
-          { name: "ネコマシン・滅", img: "images/d_002_catmachine_3.jpg" }
-        ],
-        currentForm: -1
-      },
-      { id: "d_003_oninyanma", name: "鬼にゃんま" },
-      { id: "d_004_catchevalier", name: "ネコシュバリエ" },
-      { id: "d_005_catbaby", name: "ねこベビー" },
-      { id: "d_006_nersecat", name: "ねこナース" },
-      { id: "d_007_catquest", name: "ネコクエスト" },
-      { id: "d_008_lasvors", name: "ラスヴォ―ス" },
-      { id: "d_009_satoru", name: "召喚少年サトル" },
-      { id: "d_010_tengucat", name: "ネコ天狗" },
-      { id: "d_011_catdynazaurus", name: "ネコダイナザウルス" }
-    ];
-
+  { 
+    id: "d_001_icecat", 
+    forms: [
+      { name: "ネコアイス", img: "images/d_001_icecat.jpg" },
+      { name: "ネコアイスクイーン", img: "images/d_001_icecat_2.jpg" },
+      { name: "ネコアイスクリスタル", img: "images/d_001_icecat_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "d_002_catmachine", 
+    forms: [
+      { name: "ネコママシン", img: "images/d_002_catmachine.jpg" },
+      { name: "ネコママシン・破", img: "images/d_002_catmachine_2.jpg" },
+      { name: "ネコママシン・滅", img: "images/d_002_catmachine_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "d_003_oninyanma", 
+    forms: [
+      { name: "鬼にゃんま", img: "images/d_003_oninyanma.jpg" },
+      { name: "かさじぞう・進化後", img: "images/d_003_oninyanma_2.jpg" }, // ※必要に応じて実際のゲーム内名称に書き換えてください
+      { name: "獄炎鬼にゃんま", img: "images/d_003_oninyanma_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "d_004_catchevalier", 
+    forms: [
+      { name: "ネコシュバリエ", img: "images/d_004_catchevalier.jpg" },
+      { name: "ネコベルセルク", img: "images/d_004_catchevalier_2.jpg" },
+      { name: "ネコパラディン", img: "images/d_004_catchevalier_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "d_005_catbaby", 
+    forms: [
+      { name: "ねこベビー", img: "images/d_005_catbaby.jpg" },
+      { name: "ねこベビーカー", img: "images/d_005_catbaby_2.jpg" },
+      { name: "ねこベビーフェスタ", img: "images/d_005_catbaby_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "d_006_nersecat", 
+    forms: [
+      { name: "ねこナース", img: "images/d_006_nersecat.jpg" },
+      { name: "ハートフルねこナース", img: "images/d_006_nersecat_2.jpg" },
+      { name: "ジョイフルねこナース", img: "images/d_006_nersecat_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "d_007_catquest", 
+    forms: [
+      { name: "ネコクエスト", img: "images/d_007_catquest.jpg" },
+      { name: "ネコクエストⅪ", img: "images/d_007_catquest_2.jpg" },
+      { name: "ネコ英雄クロニクル", img: "images/d_007_catquest_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "d_008_lasvors", 
+    forms: [
+      { name: "ラスヴォース", img: "images/d_008_lasvors.jpg" },
+      { name: "ファイナルラスヴォース", img: "images/d_008_lasvors_2.jpg" },
+      { name: "シン・ラスヴォース", img: "images/d_008_lasvors_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "d_009_satoru", 
+    forms: [
+      { name: "召喚少年サトル", img: "images/d_009_satoru.jpg" },
+      { name: "悪魔召喚師サトル", img: "images/d_009_satoru_2.jpg" },
+      { name: "大悪魔召喚師サトル", img: "images/d_009_satoru_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "d_010_tengucat", 
+    forms: [
+      { name: "ネコ天狗", img: "images/d_010_tengucat.jpg" },
+      { name: "ネコ大天狗", img: "images/d_010_tengucat_2.jpg" },
+      { name: "ネコ霊峰天狗", img: "images/d_010_tengucat_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "d_011_catdynazaurus", 
+    forms: [
+      { name: "ネコダイナザウルス", img: "images/d_011_catdynazaurus.jpg" },
+      { name: "ネコキングダイナ", img: "images/d_011_catdynazaurus_2.jpg" },
+      { name: "ネコカイザーダイナ", img: "images/d_011_catdynazaurus_3.jpg" }
+    ],
+    currentForm: -1
+  }
+];
     const basalasData = [
       { id: "b_001_sanada", name: "真田幸村" },
       { id: "b_002_maeda", name: "前田慶次" },
