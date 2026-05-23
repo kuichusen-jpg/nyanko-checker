@@ -385,34 +385,216 @@
     currentForm: -1
   }
 ];
-    const galsData = [
-      { id: "g_001", name: "風神のウィンディ"},
-      { id: "g_002", name: "雷神のサンディア"},
-      { id: "g_003", name: "猿帝のクウ"},
-      { id: "g_004", name: "召し豚のカイ"},
-      { id: "g_005", name: "宝杖のカッパーマイン"},
-      { id: "g_006", name: "冥界のカリファ"},
-      { id: "g_007", name: "双掌星のシシコ＆コマリ"},
-      { id: "g_008", name: "英雄令嬢メルシュ"},
-      { id: "g_009", name: "妖賢女リリン"},
-      { id: "g_010", name: "狩猟娘テルン"},
-      { id: "g_011", name: "鉄籠のペガサ"},
-      { id: "g_012", name: "獅子番長ラクレス"}
-    ];
+const galsData = [
+  { 
+    id: "g_001", 
+    forms: [
+      { name: "風神のウィンディ", img: "images/g_001.jpg" },
+      { name: "風神のウィンディα", img: "images/g_001_2.jpg" },
+      { name: "疾風のウィンディα", img: "images/g_001_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "g_002", 
+    forms: [
+      { name: "雷神のサンディア", img: "images/g_002.jpg" },
+      { name: "雷神のサンディアβ", img: "images/g_002_2.jpg" },
+      { name: "大雷神のサンディアβ", img: "images/g_002_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "g_003", 
+    forms: [
+      { name: "猿帝のクウ", img: "images/g_003.jpg" },
+      { name: "猿帝のクウγ", img: "images/g_003_2.jpg" },
+      { name: "剛猿帝のクウγ", img: "images/g_003_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "g_004", 
+    forms: [
+      { name: "召し豚のカイ", img: "images/g_004.jpg" },
+      { name: "高熱召し豚のカイμ", img: "images/g_004_2.jpg" },
+      { name: "超熱召し豚のカイμ", img: "images/g_004_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "g_005", 
+    forms: [
+      { name: "宝杖のカッパーマイン", img: "images/g_005.jpg" },
+      { name: "宝杖のカッパーマインκ", img: "images/g_005_2.jpg" },
+      { name: "魔宝杖のカッパーマインκ", img: "images/g_005_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "g_006", 
+    forms: [
+      { name: "冥界のカリファ", img: "images/g_006.jpg" },
+      { name: "冥界のカリファX", img: "images/g_006_2.jpg" },
+      { name: "幻冥界のカリファX", img: "images/g_006_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "g_007", 
+    forms: [
+      { name: "双掌星のシシコ＆コマリ", img: "images/g_007.jpg" },
+      { name: "双掌星のシシル＆コマリ", img: "images/g_007_2.jpg" },
+      { name: "双掌星のシシル＆コマリΦ", img: "images/g_007_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "g_008", 
+    forms: [
+      { name: "英雄令嬢メルシュ", img: "images/g_008.jpg" },
+      { name: "格闘令嬢メルシュ珍", img: "images/g_008_2.jpg" },
+      { name: "誇高令嬢メルシュ珍", img: "images/g_008_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "g_009", 
+    forms: [
+      { name: "妖賢女リリン", img: "images/g_009.jpg" },
+      { name: "魔賢導女リリン", img: "images/g_009_2.jpg" },
+      { name: "極魔導女リリン", img: "images/g_009_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "g_010", 
+    forms: [
+      { name: "狩猟娘テルン", img: "images/g_010.jpg" },
+      { name: "白銀の精霊使いテルン", img: "images/g_010_2.jpg" },
+      { name: "黄金の精霊使いテルン", img: "images/g_010_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "g_011", 
+    forms: [
+      { name: "鉄籠のペガサ", img: "images/g_011.jpg" },
+      { name: "撃鉄のペガサΩ", img: "images/g_011_2.jpg" },
+     ],
+    currentForm: -1
+  },
+  { 
+    id: "g_012", 
+    forms: [
+      { name: "獅子番長ラクレス", img: "images/g_012.jpg" },
+      { name: "特攻番長ラクレス", img: "images/g_012_2.jpg" },
+    ],
+    currentForm: -1
+  }
+];
 
-    const doragonData = [
-      { id: "e_001", name: "地龍ソドム"},
-      { id: "e_002", name: "聖龍メギドラ"},
-      { id: "e_003", name: "竜騎士バルス"},
-      { id: "e_004", name: "神龍かむくら"},
-      { id: "e_005", name: "竜戦機ライデン"},
-      { id: "e_006", name: "覇龍ディオラムス"},
-      { id: "e_007", name: "古龍ガングリオン"},
-      { id: "e_008", name: "角龍グラディオス"},
-      { id: "e_009", name: "邪龍ヘヴィジャーク"},
-      { id: "e_010", name: "海龍ダライアサン"},
-      { id: "e_011", name: "砲龍ガンドロス"}
-    ];
+   const doragonData = [
+  { 
+    id: "e_001", 
+    forms: [
+      { name: "地龍ソドム", img: "images/e_001.jpg" },
+      { name: "地龍王ソドム", img: "images/e_001_2.jpg" },
+      { name: "超地龍神ソドム", img: "images/e_001_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "e_002", 
+    forms: [
+      { name: "聖龍メギドラ", img: "images/e_002.jpg" },
+      { name: "聖龍王メギドラ", img: "images/e_002_2.jpg" },
+      { name: "超聖龍神メギドラ", img: "images/e_002_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "e_003", 
+    forms: [
+      { name: "竜騎士バルス", img: "images/e_003.jpg" },
+      { name: "竜聖騎士バルス", img: "images/e_003_2.jpg" },
+      { name: "超竜騎士バルス", img: "images/e_003_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "e_004", 
+    forms: [
+      { name: "神龍かむくら", img: "images/e_004.jpg" },
+      { name: "神龍王かむくら", img: "images/e_004_2.jpg" },
+      { name: "超神龍神かむくら", img: "images/e_004_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "e_005", 
+    forms: [
+      { name: "竜戦機ライデン", img: "images/e_005.jpg" },
+      { name: "竜戦機王ライデン", img: "images/e_005_2.jpg" },
+      { name: "超竜戦機神ライデン", img: "images/e_005_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "e_006", 
+    forms: [
+      { name: "覇龍ディオラムス", img: "images/e_006.jpg" },
+      { name: "覇龍王ディオラムス", img: "images/e_006_2.jpg" },
+      { name: "超覇龍神ディオラムス", img: "images/e_006_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "e_007", 
+    forms: [
+      { name: "古龍ガングリオン", img: "images/e_007.jpg" },
+      { name: "古龍王ガングリオン", img: "images/e_007_2.jpg" },
+      { name: "超古龍神ガングリオン", img: "images/e_007_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "e_008", 
+    forms: [
+      { name: "角龍グラディオス", img: "images/e_008.jpg" },
+      { name: "角龍王グラディオス", img: "images/e_008_2.jpg" },
+      { name: "超角龍神グラディオス", img: "images/e_008_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "e_009", 
+    forms: [
+      { name: "邪龍ヘヴィジャーク", img: "images/e_009.jpg" },
+      { name: "邪龍王ヘヴィジャーク", img: "images/e_009_2.jpg" },
+      { name: "超邪龍神ヘヴィジャーク", img: "images/e_009_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "e_010", 
+    forms: [
+      { name: "海龍ダライアサン", img: "images/e_010.jpg" },
+      { name: "海龍王ダライアサン", img: "images/e_010_2.jpg" },
+      { name: "超海龍神ダライアサン", img: "images/e_010_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "e_011", 
+    forms: [
+      { name: "砲龍ガンドロス", img: "images/e_011.jpg" },
+      { name: "砲龍王ガンドロス", img: "images/e_011_2.jpg" },
+      { name: "超砲龍神ガンドロス", img: "images/e_011_3.jpg" }
+    ],
+    currentForm: -1
+  }
+];
 
     const soulsData = [
       { id: "u_001", name: "うらしまタロウ"},
