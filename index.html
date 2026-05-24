@@ -32,7 +32,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 20px;
+      gap: 10px; /* ボタン追加に伴い少し隙間を調整 */
     }
 
     .status-info {
@@ -43,6 +43,21 @@
     #status {
       color: #ffcc00;
       font-size: 1.4em;
+    }
+
+    /* --- 新設：全選択ボタン --- */
+    .select-all-btn {
+      padding: 6px 12px;
+      cursor: pointer;
+      background-color: #ffcc00;
+      color: #1a1a1a;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 0.8em;
+    }
+    .select-all-btn:hover {
+      background-color: #dda300;
     }
 
     /* --- リセットボタン --- */
@@ -145,6 +160,7 @@
       全キャラ所持率：<span id="status">0</span>% 
       <span id="count-display" style="font-size: 0.8em; color: #aaa; margin-left: 5px;">(0/0)</span>
     </div>
+    <button class="select-all-btn" onclick="selectAllProgress()">全選択・進化</button>
     <button class="reset-btn" onclick="resetAll()">全リセット</button>
   </div>
 
@@ -711,7 +727,6 @@ const galsData = [
       { id: "h_006", name: "天誅ハヤブサ"},
       { id: "h_007", name: "亡者探偵ヴィグラー"},
       { id: "h_008", name: "マッドシューター・サキ"},
-      { id: "h_009", name: "白騎士キュクプロス"},
       { id: "h_010", name: "サンダージャック"},
       { id: "h_011", name: "特命機動アクセル"}
     ];
@@ -885,200 +900,226 @@ const galsData = [
       {id: "ex_007", name:"ニャンコオー"},
     ];
 
-    // --- 1. データリスト ---
-// (dynamitesData から extraData までのデータ定義はそのままなので省略します)
-const allDataGroups = [
-  dynamitesData, basalasData, galsData, doragonData, soulsData, herosData,
-  zeusData, ironData, pixysData, zetumeiData, rugaData, bustersData,
-  chounekosaiData, gokunekosaiData, valentineData, whitedayData, easterData,
-  juneData, summerData, halloweenData, chrismasData, extraData
-];
+    const allDataGroups = [
+      dynamitesData, basalasData, galsData, doragonData, soulsData, herosData,
+      zeusData, ironData, pixysData, zetumeiData, rugaData, bustersData,
+      chounekosaiData, gokunekosaiData, valentineData, whitedayData, easterData,
+      juneData, summerData, halloweenData, chrismasData, extraData
+    ];
 
-// --- 2. HTML生成関数 ---
-function generateGrid(dataList, targetId) {
-  const container = document.getElementById(targetId);
-  if (!container) return;
+    // --- 2. HTML生成関数 ---
+    function generateGrid(dataList, targetId) {
+      const container = document.getElementById(targetId);
+      if (!container) return;
 
-  const html = dataList.map(char => {
-    const initialName = char.forms ? char.forms[0].name : char.name;
-    const initialImg = char.forms ? char.forms[0].img : `images/${char.id}.jpg`;
-    
-    return `
-      <figure class="char-item" id="${char.id}" onclick="check(this)">
-        <img src="${initialImg}" alt="${initialName}" class="char-img" loading="lazy">
-        <figcaption class="char-name">${initialName}</figcaption>
-      </figure>
-    `;
-  }).join('');
+      const html = dataList.map(char => {
+        const initialName = char.forms ? char.forms[0].name : char.name;
+        const initialImg = char.forms ? char.forms[0].img : `images/${char.id}.jpg`;
+        
+        return `
+          <figure class="char-item" id="${char.id}" onclick="check(this)">
+            <img src="${initialImg}" alt="${initialName}" class="char-img" loading="lazy">
+            <figcaption class="char-name">${initialName}</figcaption>
+          </figure>
+        `;
+      }).join('');
 
-  container.innerHTML = html;
-}
-
-// --- 3. ページ読み込み時の処理 ---
-window.onload = function() {
-  generateGrid(dynamitesData, "list-dynamites");
-  generateGrid(basalasData, "list-basalas");
-  generateGrid(galsData, "list-gals");
-  generateGrid(doragonData, "list-doragon");
-  generateGrid(soulsData, "list-souls");
-  generateGrid(herosData, "heros");
-  generateGrid(zeusData, "zeus");
-  generateGrid(ironData, "iron");
-  generateGrid(pixysData, "pixys");
-  generateGrid(zetumeiData, "zetumei");
-  generateGrid(rugaData, "ruga");
-  generateGrid(bustersData, "busters");
-  generateGrid(chounekosaiData, "chounekosai");
-  generateGrid(gokunekosaiData, "gokunekosai");
-  generateGrid(valentineData, "valentine");
-  generateGrid(whitedayData, "whiteday");
-  generateGrid(easterData, "easter");
-  generateGrid(juneData, "june");
-  generateGrid(summerData, "summer");
-  generateGrid(halloweenData, "halloween");
-  generateGrid(chrismasData, "chrismas");
-  generateGrid(extraData, "extra");
-
-  loadProgress(); // データ復元（内部で即座に.ownedクラスを付与）
-  updateStatus(); // 確実にクラスが付いた後に所持率を計算
-};
-
-// --- 4. クリック時の処理（4ステップローテーション） ---
-function check(element) {
-  const charId = element.id;
-  let targetChar = null;
-
-  for (const group of allDataGroups) {
-    targetChar = group.find(c => c.id === charId);
-    if (targetChar) break;
-  }
-
-  if (targetChar && targetChar.forms) {
-    if (targetChar.currentForm === undefined) {
-      targetChar.currentForm = -1;
+      container.innerHTML = html;
     }
 
-    targetChar.currentForm++;
-    if (targetChar.currentForm >= targetChar.forms.length) {
-      targetChar.currentForm = -1; 
-    }
+    // --- 3. ページ読み込み時の処理 ---
+    window.onload = function() {
+      generateGrid(dynamitesData, "list-dynamites");
+      generateGrid(basalasData, "list-basalas");
+      generateGrid(galsData, "list-gals");
+      generateGrid(doragonData, "list-doragon");
+      generateGrid(soulsData, "list-souls");
+      generateGrid(herosData, "heros");
+      generateGrid(zeusData, "zeus");
+      generateGrid(ironData, "iron");
+      generateGrid(pixysData, "pixys");
+      generateGrid(zetumeiData, "zetumei");
+      generateGrid(rugaData, "ruga");
+      generateGrid(bustersData, "busters");
+      generateGrid(chounekosaiData, "chounekosai");
+      generateGrid(gokunekosaiData, "gokunekosai");
+      generateGrid(valentineData, "valentine");
+      generateGrid(whitedayData, "whiteday");
+      generateGrid(easterData, "easter");
+      generateGrid(juneData, "june");
+      generateGrid(summerData, "summer");
+      generateGrid(halloweenData, "halloween");
+      generateGrid(chrismasData, "chrismas");
+      generateGrid(extraData, "extra");
 
-    // クリック時はアニメーション付きで視覚効果を更新
-    updateElementVisual(element, targetChar, true);
-  } else {
-    element.classList.toggle("owned");
-  }
+      loadProgress(); // データ復元
+      updateStatus(); // 所持率を計算
+    };
 
-  saveProgress();
-  updateStatus();
-}
+    // --- 4. クリック時の処理（4ステップローテーション） ---
+    function check(element) {
+      const charId = element.id;
+      let targetChar = null;
 
-// キャラクターの表示を更新する関数（isAnimated引数を追加）
-function updateElementVisual(element, targetChar, isAnimated = false) {
-  if (!targetChar.forms) return;
+      for (const group of allDataGroups) {
+        targetChar = group.find(c => c.id === charId);
+        if (targetChar) break;
+      }
 
-  // クラスの付け外しは遅延させず、即座に行う（バグ1＆2の解消）
-  if (targetChar.currentForm === undefined || targetChar.currentForm === -1) {
-    element.classList.remove("owned");
-  } else {
-    element.classList.add("owned");
-  }
-
-  const formIndex = (targetChar.currentForm === undefined || targetChar.currentForm === -1) ? 0 : targetChar.currentForm;
-  const targetForm = targetChar.forms[formIndex];
-
-  if (isAnimated) {
-    // クリックされた時のみ回転アニメーションを適用
-    element.classList.add("form-changing");
-    
-    setTimeout(() => {
-      element.querySelector('.char-img').src = targetForm.img;
-      element.querySelector('.char-name').textContent = targetForm.name;
-    }, 200);
-
-    setTimeout(() => {
-      element.classList.remove("form-changing");
-    }, 400);
-  } else {
-    // ページ読み込み（復元）時はアニメーションなしで即座に書き換え
-    element.querySelector('.char-img').src = targetForm.img;
-    element.querySelector('.char-name').textContent = targetForm.name;
-  }
-}
-
-// --- 5. 保存と復元 ---
-function saveProgress() {
-  const progress = {};
-  
-  for (const group of allDataGroups) {
-    for (const char of group) {
-      if (char.forms) {
-        if (char.currentForm !== undefined && char.currentForm !== -1) {
-          progress[char.id] = char.currentForm;
+      if (targetChar && targetChar.forms) {
+        if (targetChar.currentForm === undefined) {
+          targetChar.currentForm = -1;
         }
+
+        targetChar.currentForm++;
+        if (targetChar.currentForm >= targetChar.forms.length) {
+          targetChar.currentForm = -1; 
+        }
+
+        updateElementVisual(element, targetChar, true);
       } else {
-        const el = document.getElementById(char.id);
-        if (el && el.classList.contains("owned")) {
-          progress[char.id] = true;
-        }
+        element.classList.toggle("owned");
+      }
+
+      saveProgress();
+      updateStatus();
+    }
+
+    // キャラクターの表示を更新する関数
+    function updateElementVisual(element, targetChar, isAnimated = false) {
+      if (!targetChar.forms) return;
+
+      if (targetChar.currentForm === undefined || targetChar.currentForm === -1) {
+        element.classList.remove("owned");
+      } else {
+        element.classList.add("owned");
+      }
+
+      const formIndex = (targetChar.currentForm === undefined || targetChar.currentForm === -1) ? 0 : targetChar.currentForm;
+      const targetForm = targetChar.forms[formIndex];
+
+      if (isAnimated) {
+        element.classList.add("form-changing");
+        
+        setTimeout(() => {
+          element.querySelector('.char-img').src = targetForm.img;
+          element.querySelector('.char-name').textContent = targetForm.name;
+        }, 200);
+
+        setTimeout(() => {
+          element.classList.remove("form-changing");
+        }, 400);
+      } else {
+        element.querySelector('.char-img').src = targetForm.img;
+        element.querySelector('.char-name').textContent = targetForm.name;
       }
     }
-  }
-  localStorage.setItem("nyanko_save_v2", JSON.stringify(progress));
-}
 
-function loadProgress() {
-  const savedData = localStorage.getItem("nyanko_save_v2");
-  if (!savedData) return;
-  
-  const progress = JSON.parse(savedData);
-  
-  for (const group of allDataGroups) {
-    for (const char of group) {
-      if (progress[char.id] !== undefined) {
-        const el = document.getElementById(char.id);
-        if (!el) continue;
+    // --- 新設：全選択・進化処理関数 ---
+    function selectAllProgress() {
+      if (confirm("すべてのキャラの所持・進捗状況を1段階進めますか？\n（最大形態のキャラはそのまま維持されます）")) {
+        
+        for (const group of allDataGroups) {
+          for (const char of group) {
+            const el = document.getElementById(char.id);
+            if (!el) continue;
 
-        if (char.forms) {
-          char.currentForm = progress[char.id];
-          // 復元時はアニメーションフラグを false にして即時反映
-          updateElementVisual(el, char, false);
-        } else {
-          if (progress[char.id] === true) {
-            el.classList.add("owned");
+            if (char.forms) {
+              // 形態データがあるキャラ
+              if (char.currentForm === undefined || char.currentForm === -1) {
+                char.currentForm = 0; // 未所持なら第一形態
+                updateElementVisual(el, char, false);
+              } else if (char.currentForm < char.forms.length - 1) {
+                char.currentForm++; // 次の形態に進める
+                updateElementVisual(el, char, false);
+              }
+              // 最大形態の場合は何もしない
+            } else {
+              // 形態データがないシンプルなキャラ
+              if (!el.classList.contains("owned")) {
+                el.classList.add("owned");
+              }
+            }
           }
         }
+        
+        saveProgress();
+        updateStatus();
       }
     }
-  }
-}
 
-function updateStatus() {
-  const all = document.querySelectorAll(".char-item").length;
-  const owned = document.querySelectorAll(".char-item.owned").length;
-  const percent = all > 0 ? Math.floor((owned / all) * 100) : 0;
-  document.getElementById("status").textContent = percent;
-  document.getElementById("count-display").textContent = `(${owned}/${all})`;
-}
-
-function resetAll() {
-  if (confirm("チェックをすべて外しますか？")) {
-    for (const group of allDataGroups) {
-      for (const char of group) {
-        char.currentForm = -1;
-        const el = document.getElementById(char.id);
-        if (el) {
-          el.classList.remove("owned");
+    // --- 5. 保存と復元 ---
+    function saveProgress() {
+      const progress = {};
+      
+      for (const group of allDataGroups) {
+        for (const char of group) {
           if (char.forms) {
-            updateElementVisual(el, char, false);
+            if (char.currentForm !== undefined && char.currentForm !== -1) {
+              progress[char.id] = char.currentForm;
+            }
+          } else {
+            const el = document.getElementById(char.id);
+            if (el && el.classList.contains("owned")) {
+              progress[char.id] = true;
+            }
+          }
+        }
+      }
+      localStorage.setItem("nyanko_save_v2", JSON.stringify(progress));
+    }
+
+    function loadProgress() {
+      const savedData = localStorage.getItem("nyanko_save_v2");
+      if (!savedData) return;
+      
+      const progress = JSON.parse(savedData);
+      
+      for (const group of allDataGroups) {
+        for (const char of group) {
+          if (progress[char.id] !== undefined) {
+            const el = document.getElementById(char.id);
+            if (!el) continue;
+
+            if (char.forms) {
+              char.currentForm = progress[char.id];
+              updateElementVisual(el, char, false);
+            } else {
+              if (progress[char.id] === true) {
+                el.classList.add("owned");
+              }
+            }
           }
         }
       }
     }
-    localStorage.removeItem("nyanko_save_v2");
-    updateStatus();
-  }
-}
+
+    function updateStatus() {
+      const all = document.querySelectorAll(".char-item").length;
+      const owned = document.querySelectorAll(".char-item.owned").length;
+      const percent = all > 0 ? Math.floor((owned / all) * 100) : 0;
+      document.getElementById("status").textContent = percent;
+      document.getElementById("count-display").textContent = `(${owned}/${all})`;
+    }
+
+    function resetAll() {
+      if (confirm("チェックをすべて外しますか？")) {
+        for (const group of allDataGroups) {
+          for (const char of group) {
+            char.currentForm = -1;
+            const el = document.getElementById(char.id);
+            if (el) {
+              el.classList.remove("owned");
+              if (char.forms) {
+                updateElementVisual(el, char, false);
+              }
+            }
+          }
+        }
+        localStorage.removeItem("nyanko_save_v2");
+        updateStatus();
+      }
+    }
   </script>
 </body>
 </html>
