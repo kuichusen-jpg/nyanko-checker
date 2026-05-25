@@ -906,29 +906,186 @@ const galsData = [
 ];
 
     const ironData = [
-      { id: "i_001", name: "帝国陸軍カタパルズ"},
-      { id: "i_002", name: "古代軍船ガレーズ"},
-      { id: "i_003", name: "飛空襲撃ボンバーズ"},
-      { id: "i_004", name: "観測兵器ガリレオ"},
-      { id: "i_005", name: "温泉天国テルマエ"},
-      { id: "i_006", name: "空中商会コロンブス"},
-      { id: "i_007", name: "超竜戦機デス・トロイ"},
-      { id: "i_008", name: "周遊芸団カルーセルズ"},
-      { id: "i_009", name: "建築兵団スフィンクス"},
-      { id: "i_010", name: "曲射砲台ランチャーズ"}
-    ];
+  { 
+    id: "i_001", 
+    forms: [
+      { name: "帝国陸軍カタパルズ", img: "images/i_001.jpg" },
+      { name: "撃滅戦車ギガパルド", img: "images/i_001_2.jpg" },
+      { name: "超撃滅戦車ギガパルド", img: "images/i_001_3.jpg" },
+      { name: "極撃滅戦車ギガパルド", img: "images/i_001_4.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "i_002", 
+    forms: [
+      { name: "古代軍船ガレーズ", img: "images/i_002.jpg" },
+      { name: "無敵艦隊シーガレオン", img: "images/i_002_2.jpg" },
+      { name: "超無敵艦隊シーガレオン", img: "images/i_002_3.jpg" },
+      { name: "極無敵艦隊シーガレオン", img: "images/i_002_4.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "i_003", 
+    forms: [
+      { name: "飛空襲撃ボンバーズ", img: "images/i_003.jpg" },
+      { name: "飛行戦艦ボルボンバー", img: "images/i_003_2.jpg" },
+      { name: "超飛行戦艦ボルボンバー", img: "images/i_003_3.jpg" },
+      { name: "極飛行戦艦ボルボンバー", img: "images/i_003_4.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "i_004", 
+    forms: [
+      { name: "観測兵器ガリレオ", img: "images/i_004.jpg" },
+      { name: "時空基地アルマゲドン", img: "images/i_004_2.jpg" },
+      { name: "超時空基地アルマゲドン", img: "images/i_004_3.jpg" },
+      
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "i_005", 
+    forms: [
+      { name: "温泉天国テルマエ", img: "images/i_005.jpg" },
+      { name: "地底戦隊グランドン", img: "images/i_005_2.jpg" },
+      { name: "超地底戦隊グランドン", img: "images/i_005_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "i_006", 
+    forms: [
+      { name: "空中商会コロンブス", img: "images/i_006.jpg" },
+      { name: "輸送兵団アトランチス", img: "images/i_006_2.jpg" },
+      { name: "超輸送兵団アトランチス", img: "images/i_006_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "i_007", 
+    forms: [
+      { name: "超竜戦機デス・トロイ", img: "images/i_007.jpg" },
+      { name: "電磁戦機ディアボロス", img: "images/i_007_2.jpg" },
+      { name: "超電磁戦機ディアボロス", img: "images/i_007_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "i_008", 
+    forms: [
+      { name: "周遊芸団カルーセルズ", img: "images/i_008.jpg" },
+      { name: "奇襲怪光エンヴァンズ", img: "images/i_008_2.jpg" },
+      { name: "超奇襲怪光エンヴァンズ", img: "images/i_008_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "i_009", 
+    forms: [
+      { name: "建築兵団スフィンクス", img: "images/i_009.jpg" },
+      { name: "突撃部隊コンボーイズ", img: "images/i_009_2.jpg" },
+      { name: "超突撃部隊コンボーイズ", img: "images/i_009_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "i_010", 
+    forms: [
+      { name: "曲射砲台ランチャーズ", img: "images/i_010.jpg" },
+      { name: "迎撃砲隊ガンハウザー", img: "images/i_010_2.jpg" },
+    ],
+    currentForm: -1
+  }
+];
 
     const pixysData = [
-      { id: "p_001", name: "火の精霊メララ"},
-      { id: "p_002", name: "水の精霊ミズリィ"},
-      { id: "p_003", name: "風の精霊エアル"},
-      { id: "p_004", name: "雷の精霊ボルト"},
-      { id: "p_005", name: "石の精霊ゴロー"},
-      { id: "p_006", name: "闇の精霊ヤミィ"},
-      { id: "p_007", name: "氷の精霊フリズ"},
-      { id: "p_008", name: "鉄の精霊カッチン"},
-      { id: "p_009", name: "樹の精霊コモリ"}
-    ];
+  { 
+    id: "p_001", 
+    forms: [
+      { name: "火の精霊メララ", img: "images/p_001.jpg" },
+      { name: "火炎の精霊メラバーン", img: "images/p_001_2.jpg" },
+      { name: "火炎の精霊王メラバーン", img: "images/p_001_3.jpg" },
+      { name: "火炎の大精霊メラフェニックス", img: "images/p_001_4.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "p_002", 
+    forms: [
+      { name: "水の精霊ミズリィ", img: "images/p_002.jpg" },
+      { name: "流水の精霊ミズマリン", img: "images/p_002_2.jpg" },
+      { name: "流水の精霊王ミズマリン", img: "images/p_002_3.jpg" },
+      { name: "流水の大精霊ミズマリナーデ", img: "images/p_002_4.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "p_003", 
+    forms: [
+      { name: "風の精霊エアル", img: "images/p_003.jpg" },
+      { name: "嵐の精霊エアフワン", img: "images/p_003_2.jpg" },
+      { name: "嵐の精霊王エアフワンテ", img: "images/p_003_3.jpg" },
+      { name: "嵐の大精霊エアフワンティ", img: "images/p_003_4.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "p_004", 
+    forms: [
+      { name: "雷の精霊ボルト", img: "images/p_004.jpg" },
+      { name: "天雷の精霊ピカボルト", img: "images/p_004_2.jpg" },
+      { name: "天雷の精霊王ピカボルト", img: "images/p_004_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "p_005", 
+    forms: [
+      { name: "石の精霊ゴロー", img: "images/p_005.jpg" },
+      { name: "岩石の精霊イワゴロー", img: "images/p_005_2.jpg" },
+      { name: "岩石の精霊王イワゴロー", img: "images/p_005_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "p_006", 
+    forms: [
+      { name: "闇の精霊ヤミィ", img: "images/p_006.jpg" },
+      { name: "暗黒の精霊ヤミノワール", img: "images/p_006_2.jpg" },
+      { name: "暗黒の精霊王ヤミノワール", img: "images/p_006_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "p_007", 
+    forms: [
+      { name: "氷の精霊フリズ", img: "images/p_007.jpg" },
+      { name: "凍結の精霊ブリザーナ", img: "images/p_007_2.jpg" },
+      { name: "凍結の精霊王ブリザーナ", img: "images/p_007_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "p_008", 
+    forms: [
+      { name: "鉄の精霊カッチン", img: "images/p_008.jpg" },
+      { name: "鋼鉄の精霊テツカッチン", img: "images/p_008_2.jpg" },
+      { name: "鋼鉄の精霊王テツカッチン", img: "images/p_008_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "p_009", 
+    forms: [
+      { name: "樹の精霊コモリ", img: "images/p_009.jpg" },
+      { name: "樹木の精霊モリリン", img: "images/p_009_2.jpg" },
+    ],
+    currentForm: -1
+  }
+];
 
     const zetumeiData = [
       { id: "m_001", name: "狐娘ヒメユリ"},
