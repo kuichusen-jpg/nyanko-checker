@@ -1169,26 +1169,152 @@ const galsData = [
   }
 ];
     const rugaData = [
-      { id: "r_001", name: "ネコルガ"},
-      { id: "r_002", name: "アシルガ"},
-      { id: "r_003", name: "クビルガ"},
-      { id: "r_004", name: "テコルガ"},
-      { id: "r_005", name: "バララガ"},
-      { id: "r_006", name: "トゲルガ"},
-      { id: "r_007", name: "ノビルガ"},
-      { id: "r_008", name: "オイルガ"},
-      { id: "r_009", name: "オコルガ"},
-      { id: "r_010", name: "カオルガ"},
-      { id: "r_011", name: "マモルガ"}
-    ];
-
-    const bustersData = [
-      {id: "bs_001", name:"猫飯拳パイパイ"},
-      {id: "bs_002", name:"閃雷機兵レイ"},
-      {id: "bs_003", name:"風隼さくら"},
-      {id: "bs_004", name:"地獄警官エマ"},
-      {id: "bs_005", name:"光の女神シリウス"},
-    ];
+  { 
+    id: "r_001", 
+    forms: [
+      { name: "ネコルガ", img: "images/r_001.jpg" },
+      { name: "ケサランパサラン", img: "images/r_001_2.jpg" },
+      { name: "ウルトラケサラン", img: "images/r_001_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "r_002", 
+    forms: [
+      { name: "アシルガ", img: "images/r_002.jpg" },
+      { name: "アシランパサラン", img: "images/r_002_2.jpg" },
+      { name: "オブラランパサラン", img: "images/r_002_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "r_003", 
+    forms: [
+      { name: "クビルガ", img: "images/r_003.jpg" },
+      { name: "クビランパサラン", img: "images/r_003_2.jpg" },
+      { name: "E・ランパサラン", img: "images/r_003_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "r_004", 
+    forms: [
+      { name: "テコルガ", img: "images/r_004.jpg" },
+      { name: "テサランパサラン", img: "images/r_004_2.jpg" },
+      { name: "ムギワラテサラン", img: "images/r_004_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "r_005", 
+    forms: [
+      { name: "バララガ", img: "images/r_005.jpg" },
+      { name: "バラランパサラン", img: "images/r_005_2.jpg" },
+      { name: "ピカランパララン", img: "images/r_005_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "r_006", 
+    forms: [
+      { name: "トゲルガ", img: "images/r_006.jpg" },
+      { name: "トゲランパサラン", img: "images/r_006_2.jpg" },
+      { name: "デイダラトゲラン", img: "images/r_006_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "r_007", 
+    forms: [
+      { name: "ノビルガ", img: "images/r_007.jpg" },
+      { name: "ノビランパサラン", img: "images/r_007_2.jpg" },
+      { name: "ノビランターバン", img: "images/r_007_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "r_008", 
+    forms: [
+      { name: "オイルガ", img: "images/r_008.jpg" },
+      { name: "オイランパサラン", img: "images/r_008_2.jpg" },
+      { name: "スケランカクラン", img: "images/r_008_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "r_009", 
+    forms: [
+      { name: "オコルガ", img: "images/r_009.jpg" },
+      { name: "オコランパサラン", img: "images/r_009_2.jpg" },
+      { name: "ゲキオコパサラン", img: "images/r_009_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "r_010", 
+    forms: [
+      { name: "カオルガ", img: "images/r_010.jpg" },
+      { name: "カオランパサラン", img: "images/r_010_2.jpg" },
+      { name: "カオランタタラン", img: "images/r_010_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "r_011", 
+    forms: [
+      { name: "マモルガ", img: "images/r_011.jpg" },
+      { name: "マモランパサラン", img: "images/r_011_2.jpg" },
+    ],
+    currentForm: -1
+  }
+];
+   const bustersData = [
+  { 
+    id: "bs_001", 
+    forms: [
+      { name: "猫飯拳パイパイ", img: "images/bs_001.jpg" },
+      { name: "猫飯拳パイパイZ", img: "images/bs_001_2.jpg" },
+      { name: "猫飯拳パイパイDX", img: "images/bs_001_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "bs_002", 
+    forms: [
+      { name: "閃雷機兵レイ", img: "images/bs_002.jpg" },
+      { name: "閃雷機兵プラズマレイ", img: "images/bs_002_2.jpg" },
+      { name: "閃雷輝兵ウイングレイ", img: "images/bs_002_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "bs_003", 
+    forms: [
+      { name: "風隼さくら", img: "images/bs_003.jpg" },
+      { name: "JK風隼さくら", img: "images/bs_003_2.jpg" },
+      { name: "天誅風隼さくら", img: "images/bs_003_3.jpg" },
+      { name: "天誅Z風隼さくら", img: "images/bs_004.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "bs_004", 
+    forms: [
+      { name: "地獄警官エマ", img: "images/bs_004.jpg" },
+      { name: "地獄軍曹エマ", img: "images/bs_004_2.jpg" },
+      { name: "閻魔総長エマ", img: "images/bs_004_3.jpg" }
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "bs_005", 
+    forms: [
+      { name: "光の女神シリウス", img: "images/bs_005.jpg" },
+      { name: "来光の女神シリウス", img: "images/bs_005_2.jpg" },
+    ],
+    currentForm: -1
+  }
+];
 
     const chounekosaiData = [
       {id: "cn_001", name:"幼獣ガオ"},
