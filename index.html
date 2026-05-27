@@ -149,7 +149,41 @@
   </style>
 </head>
 <body>
-// --- 1. データリスト ---
+
+<div class="status-bar">
+    <div class="status-info">
+      全キャラ所持率：<span id="status">0</span>% 
+      <span id="count-display" style="font-size: 0.8em; color: #aaa; margin-left: 5px;">(0/0)</span>
+    </div>
+    <button class="select-all-btn" onclick="selectAll()">一括進化</button>
+    <button class="reset-btn" onclick="resetAll()">全リセット</button>
+  </div>
+
+  <div class="category"><h2>超激ダイナマイツ</h2><div id="list-dynamites" class="char-grid"></div></div>
+  <div class="category"><h2>戦国武神バサラーズ</h2><div id="list-basalas" class="char-grid"></div></div>
+  <div class="category"><h2>電脳学園ギャラクシーギャルズ</h2><div id="list-gals" class="char-grid"></div></div>
+  <div class="category"><h2>超破壊大帝ドラゴンエンペラーズ</h2><div id="list-doragon" class="char-grid"></div></div>
+  <div class="category"><h2>超古代勇者ウルトラソウルズ</h2><div id="list-souls" class="char-grid"></div></div>
+  <div class="category"><h2>逆襲の英雄ダークヒーローズ</h2><div id="heros" class="char-grid"></div></div>
+  <div class="category"><h2>究極降臨ギガントゼウス</h2><div id="zeus" class="char-grid"></div></div>
+  <div class="category"><h2>革命軍隊アイアンウォーズ</h2><div id="iron" class="char-grid"></div></div>
+  <div class="category"><h2>大精霊エレメンタルピクシーズ</h2><div id="pixys" class="char-grid"></div></div>
+  <div class="category"><h2>絶命美少女ギャルズモンスターズ</h2><div id="zetumei" class="char-grid"></div></div>
+  <div class="category"><h2>伝説のネコルガ族</h2><div id="ruga" class="char-grid"></div></div>
+  <div class="category"><h2>バスターズ</h2><div id="busters" class="char-grid"></div></div>
+  <div class="category"><h2>超ネコ祭</h2><div id="chounekosai" class="char-grid"></div></div>
+  <div class="category"><h2>極ネコ祭</h2><div id="gokunekosai" class="char-grid"></div></div>
+  <div class="category"><h2>バレンタインギャルズ</h2><div id="valentine" class="char-grid"></div></div>
+  <div class="category"><h2>俺たちが主役ホワイトデー</h2><div id="whiteday" class="char-grid"></div></div>
+  <div class="category"><h2>イースターカーニバル</h2><div id="easter" class="char-grid"></div></div>
+  <div class="category"><h2>ジューンブライド</h2><div id="june" class="char-grid"></div></div>
+  <div class="category"><h2>サマーガールズ</h2><div id="summer" class="char-grid"></div></div>
+  <div class="category"><h2>ハロウィン</h2><div id="halloween" class="char-grid"></div></div>
+  <div class="category"><h2>クリスマスギャルズ</h2><div id="chrismas" class="char-grid"></div></div>
+  <div class="category"><h2>その他</h2><div id="extra" class="char-grid"></div></div>
+
+  <script>
+    // --- 1. データリスト ---
     const dynamitesData = [
   { 
     id: "d_001_icecat", 
@@ -1516,39 +1550,6 @@ const galsData = [
     ];
 
     // --- 1. データリスト ---
-  <div class="status-bar">
-    <div class="status-info">
-      全キャラ所持率：<span id="status">0</span>% 
-      <span id="count-display" style="font-size: 0.8em; color: #aaa; margin-left: 5px;">(0/0)</span>
-    </div>
-    <button class="select-all-btn" onclick="selectAll()">一括進化</button>
-    <button class="reset-btn" onclick="resetAll()">全リセット</button>
-  </div>
-
-  <div class="category"><h2>超激ダイナマイツ</h2><div id="list-dynamites" class="char-grid"></div></div>
-  <div class="category"><h2>戦国武神バサラーズ</h2><div id="list-basalas" class="char-grid"></div></div>
-  <div class="category"><h2>電脳学園ギャラクシーギャルズ</h2><div id="list-gals" class="char-grid"></div></div>
-  <div class="category"><h2>超破壊大帝ドラゴンエンペラーズ</h2><div id="list-doragon" class="char-grid"></div></div>
-  <div class="category"><h2>超古代勇者ウルトラソウルズ</h2><div id="list-souls" class="char-grid"></div></div>
-  <div class="category"><h2>逆襲の英雄ダークヒーローズ</h2><div id="heros" class="char-grid"></div></div>
-  <div class="category"><h2>究極降臨ギガントゼウス</h2><div id="zeus" class="char-grid"></div></div>
-  <div class="category"><h2>革命軍隊アイアンウォーズ</h2><div id="iron" class="char-grid"></div></div>
-  <div class="category"><h2>大精霊エレメンタルピクシーズ</h2><div id="pixys" class="char-grid"></div></div>
-  <div class="category"><h2>絶命美少女ギャルズモンスターズ</h2><div id="zetumei" class="char-grid"></div></div>
-  <div class="category"><h2>伝説のネコルガ族</h2><div id="ruga" class="char-grid"></div></div>
-  <div class="category"><h2>バスターズ</h2><div id="busters" class="char-grid"></div></div>
-  <div class="category"><h2>超ネコ祭</h2><div id="chounekosai" class="char-grid"></div></div>
-  <div class="category"><h2>極ネコ祭</h2><div id="gokunekosai" class="char-grid"></div></div>
-  <div class="category"><h2>バレンタインギャルズ</h2><div id="valentine" class="char-grid"></div></div>
-  <div class="category"><h2>俺たちが主役ホワイトデー</h2><div id="whiteday" class="char-grid"></div></div>
-  <div class="category"><h2>イースターカーニバル</h2><div id="easter" class="char-grid"></div></div>
-  <div class="category"><h2>ジューンブライド</h2><div id="june" class="char-grid"></div></div>
-  <div class="category"><h2>サマーガールズ</h2><div id="summer" class="char-grid"></div></div>
-  <div class="category"><h2>ハロウィン</h2><div id="halloween" class="char-grid"></div></div>
-  <div class="category"><h2>クリスマスギャルズ</h2><div id="chrismas" class="char-grid"></div></div>
-  <div class="category"><h2>その他</h2><div id="extra" class="char-grid"></div></div>
-
-  <script>
 const allDataGroups = [
   dynamitesData, basalasData, galsData, doragonData, soulsData, herosData,
   zeusData, ironData, pixysData, zetumeiData, rugaData, bustersData,
