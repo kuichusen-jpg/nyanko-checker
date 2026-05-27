@@ -1317,28 +1317,154 @@ const galsData = [
 ];
 
     const chounekosaiData = [
-      {id: "cn_001", name:"幼獣ガオ"},
-      {id: "cn_002", name:"巫女姫ミタマ"},
-      {id: "cn_003", name:"幼傑ダルターニャ"},
-      {id: "cn_004", name:"厄災の子キャスリィ"},
-      {id: "cn_005", name:"幼獣ガル"},
-      {id: "cn_006", name:"踊り子イズ"},
-      {id: "cn_007", name:"運命の子フォノ"},
-      {id: "cn_008", name:"幼天女ルーナ"},
-      {id: "cn_009", name:"幼騎士ルーノ"},
-    ];
+  { 
+    id: "cn_001", 
+    forms: [
+      { name: "幼獣ガオ", img: "images/cn_001.jpg" },
+      { name: "皇獣ガオウ", img: "images/cn_001_2.jpg" },
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "cn_002", 
+    forms: [
+      { name: "巫女姫ミタマ", img: "images/cn_002.jpg" },
+      { name: "白無垢のミタマ", img: "images/cn_002_2.jpg" },
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "cn_003", 
+    forms: [
+      { name: "幼傑ダルターニャ", img: "images/cn_003.jpg" },
+      { name: "英傑ダルターニャ", img: "images/cn_003_2.jpg" },
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "cn_004", 
+    forms: [
+      { name: "厄災の子キャスリィ", img: "images/cn_004.jpg" },
+      { name: "祝祭の聖女キャスリィ", img: "images/cn_004_2.jpg" },
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "cn_005", 
+    forms: [
+      { name: "幼獣ガル", img: "images/cn_005.jpg" },
+      { name: "帝獣ガルディアン", img: "images/cn_005_2.jpg" },
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "cn_006", 
+    forms: [
+      { name: "踊り子イズ", img: "images/cn_006.jpg" },
+      { name: "魅惑の舞姫イズ", img: "images/cn_006_2.jpg" },
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "cn_007", 
+    forms: [
+      { name: "運命の子フォノ", img: "images/cn_007.jpg" },
+      { name: "天命の王フォノウ", img: "images/cn_007_2.jpg" },
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "cn_008", 
+    forms: [
+      { name: "幼天女ルーナ", img: "images/cn_008.jpg" },
+      { name: "救済の天女ルナーシャ", img: "images/cn_008_2.jpg" },
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "cn_009", 
+    forms: [
+      { name: "幼騎士ルーノ", img: "images/cn_009.jpg" },
+      { name: "満月の騎士ルーノス", img: "images/cn_009_2.jpg" },
+    ],
+    currentForm: -1
+  }
+];
 
     const gokunekosaiData = [
-      {id: "gn_001", name:"黒獣ガオウ"},
-      {id: "gn_002", name:"黒無垢のミタマ"},
-      {id: "gn_003", name:"影傑ダルターニャ"},
-      {id: "gn_004", name:"禍根の魔女キャスリィ"},
-      {id: "gn_005", name:"黒獣ガルディアン"},
-      {id: "gn_006", name:"悲嘆の踊り子イズ"},
-      {id: "gn_007", name:"非命の王フォノウ"},
-      {id: "gn_008", name:"冥護の天女ルナーシャ"},
-      {id: "gn_009", name:"孤月の騎士ルーノス"}
-    ];
+  { 
+    id: "gn_001", 
+    forms: [
+      { name: "黒獣ガオウ", img: "images/gn_001.jpg" },
+      { name: "皇獣ガオウダーク", img: "images/gn_001_2.jpg" },
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "gn_002", 
+    forms: [
+      { name: "黒無垢のミタマ", img: "images/gn_002.jpg" },
+      { name: "黒蝶のミタマダーク", img: "images/gn_002_2.jpg" },
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "gn_003", 
+    forms: [
+      { name: "影傑ダルターニャ", img: "images/gn_003.jpg" },
+      { name: "黒傑ダークダルターニャ", img: "images/gn_003_2.jpg" },
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "gn_004", 
+    forms: [
+      { name: "禍根の魔女キャスリィ", img: "images/gn_004.jpg" },
+      { name: "漆黒の魔女ダークキャスリィ", img: "images/gn_004_2.jpg" },
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "gn_005", 
+    forms: [
+      { name: "黒獣ガルディアン", img: "images/gn_005.jpg" },
+      { name: "帝獣ダークガルディアン", img: "images/gn_005_2.jpg" },
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "gn_006", 
+    forms: [
+      { name: "悲嘆の踊り子イズ", img: "images/gn_006.jpg" },
+      { name: "哀悼の舞姫イズ", img: "images/gn_006_2.jpg" },
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "gn_007", 
+    forms: [
+      { name: "非命の王フォノウ", img: "images/gn_007.jpg" },
+      { name: "断命の王ダークフォノウ", img: "images/gn_007_2.jpg" },
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "gn_008", 
+    forms: [
+      { name: "冥護の天女ルナーシャ", img: "images/gn_008.jpg" },
+      { name: "寂滅の天女ダークルナーシャ", img: "images/gn_008_2.jpg" },
+    ],
+    currentForm: -1
+  },
+  { 
+    id: "gn_009", 
+    forms: [
+      { name: "孤月の騎士ルーノス", img: "images/gn_009.jpg" },
+      { name: "晦月の騎士ダークルーノス", img: "images/gn_009_2.jpg" },
+    ],
+    currentForm: -1
+  }
+];
 
     const valentineData = [
       {id: "va_001", name:"恋女神ショコラディーテ"},
