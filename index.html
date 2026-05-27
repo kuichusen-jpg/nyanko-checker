@@ -32,7 +32,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 15px; /* ボタン追加に伴い少し隙間を調整 */
+      gap: 15px;
     }
 
     .status-info {
@@ -55,10 +55,10 @@
       font-size: 0.8em;
     }
 
-    /* --- 全選択ボタン --- */
+    /* --- 一括進級ボタン（黄色に変更） --- */
     .select-all-btn {
-      background-color: #00cc66;
-      color: white;
+      background-color: #ffcc00;
+      color: #1a1a1a; /* 黒文字にすることで視認性を高めています */
     }
 
     /* --- リセットボタン --- */
@@ -149,40 +149,6 @@
   </style>
 </head>
 <body>
-
-  <div class="status-bar">
-    <div class="status-info">
-      全キャラ所持率：<span id="status">0</span>% 
-      <span id="count-display" style="font-size: 0.8em; color: #aaa; margin-left: 5px;">(0/0)</span>
-    </div>
-    <button class="select-all-btn" onclick="selectAll()">全選択</button>
-    <button class="reset-btn" onclick="resetAll()">全リセット</button>
-  </div>
-
-  <div class="category"><h2>超激ダイナマイツ</h2><div id="list-dynamites" class="char-grid"></div></div>
-  <div class="category"><h2>戦国武神バサラーズ</h2><div id="list-basalas" class="char-grid"></div></div>
-  <div class="category"><h2>電脳学園ギャラクシーギャルズ</h2><div id="list-gals" class="char-grid"></div></div>
-  <div class="category"><h2>超破壊大帝ドラゴンエンペラーズ</h2><div id="list-doragon" class="char-grid"></div></div>
-  <div class="category"><h2>超古代勇者ウルトラソウルズ</h2><div id="list-souls" class="char-grid"></div></div>
-  <div class="category"><h2>逆襲の英雄ダークヒーローズ</h2><div id="heros" class="char-grid"></div></div>
-  <div class="category"><h2>究極降臨ギガントゼウス</h2><div id="zeus" class="char-grid"></div></div>
-  <div class="category"><h2>革命軍隊アイアンウォーズ</h2><div id="iron" class="char-grid"></div></div>
-  <div class="category"><h2>大精霊エレメンタルピクシーズ</h2><div id="pixys" class="char-grid"></div></div>
-  <div class="category"><h2>絶命美少女ギャルズモンスターズ</h2><div id="zetumei" class="char-grid"></div></div>
-  <div class="category"><h2>伝説のネコルガ族</h2><div id="ruga" class="char-grid"></div></div>
-  <div class="category"><h2>バスターズ</h2><div id="busters" class="char-grid"></div></div>
-  <div class="category"><h2>超ネコ祭</h2><div id="chounekosai" class="char-grid"></div></div>
-  <div class="category"><h2>極ネコ祭</h2><div id="gokunekosai" class="char-grid"></div></div>
-  <div class="category"><h2>バレンタインギャルズ</h2><div id="valentine" class="char-grid"></div></div>
-  <div class="category"><h2>俺たちが主役ホワイトデー</h2><div id="whiteday" class="char-grid"></div></div>
-  <div class="category"><h2>イースターカーニバル</h2><div id="easter" class="char-grid"></div></div>
-  <div class="category"><h2>ジューンブライド</h2><div id="june" class="char-grid"></div></div>
-  <div class="category"><h2>サマーガールズ</h2><div id="summer" class="char-grid"></div></div>
-  <div class="category"><h2>ハロウィン</h2><div id="halloween" class="char-grid"></div></div>
-  <div class="category"><h2>クリスマスギャルズ</h2><div id="chrismas" class="char-grid"></div></div>
-  <div class="category"><h2>その他</h2><div id="extra" class="char-grid"></div></div>
-
-  <script>
 // --- 1. データリスト ---
     const dynamitesData = [
   { 
@@ -1550,6 +1516,39 @@ const galsData = [
     ];
 
     // --- 1. データリスト ---
+  <div class="status-bar">
+    <div class="status-info">
+      全キャラ所持率：<span id="status">0</span>% 
+      <span id="count-display" style="font-size: 0.8em; color: #aaa; margin-left: 5px;">(0/0)</span>
+    </div>
+    <button class="select-all-btn" onclick="selectAll()">一括進化</button>
+    <button class="reset-btn" onclick="resetAll()">全リセット</button>
+  </div>
+
+  <div class="category"><h2>超激ダイナマイツ</h2><div id="list-dynamites" class="char-grid"></div></div>
+  <div class="category"><h2>戦国武神バサラーズ</h2><div id="list-basalas" class="char-grid"></div></div>
+  <div class="category"><h2>電脳学園ギャラクシーギャルズ</h2><div id="list-gals" class="char-grid"></div></div>
+  <div class="category"><h2>超破壊大帝ドラゴンエンペラーズ</h2><div id="list-doragon" class="char-grid"></div></div>
+  <div class="category"><h2>超古代勇者ウルトラソウルズ</h2><div id="list-souls" class="char-grid"></div></div>
+  <div class="category"><h2>逆襲の英雄ダークヒーローズ</h2><div id="heros" class="char-grid"></div></div>
+  <div class="category"><h2>究極降臨ギガントゼウス</h2><div id="zeus" class="char-grid"></div></div>
+  <div class="category"><h2>革命軍隊アイアンウォーズ</h2><div id="iron" class="char-grid"></div></div>
+  <div class="category"><h2>大精霊エレメンタルピクシーズ</h2><div id="pixys" class="char-grid"></div></div>
+  <div class="category"><h2>絶命美少女ギャルズモンスターズ</h2><div id="zetumei" class="char-grid"></div></div>
+  <div class="category"><h2>伝説のネコルガ族</h2><div id="ruga" class="char-grid"></div></div>
+  <div class="category"><h2>バスターズ</h2><div id="busters" class="char-grid"></div></div>
+  <div class="category"><h2>超ネコ祭</h2><div id="chounekosai" class="char-grid"></div></div>
+  <div class="category"><h2>極ネコ祭</h2><div id="gokunekosai" class="char-grid"></div></div>
+  <div class="category"><h2>バレンタインギャルズ</h2><div id="valentine" class="char-grid"></div></div>
+  <div class="category"><h2>俺たちが主役ホワイトデー</h2><div id="whiteday" class="char-grid"></div></div>
+  <div class="category"><h2>イースターカーニバル</h2><div id="easter" class="char-grid"></div></div>
+  <div class="category"><h2>ジューンブライド</h2><div id="june" class="char-grid"></div></div>
+  <div class="category"><h2>サマーガールズ</h2><div id="summer" class="char-grid"></div></div>
+  <div class="category"><h2>ハロウィン</h2><div id="halloween" class="char-grid"></div></div>
+  <div class="category"><h2>クリスマスギャルズ</h2><div id="chrismas" class="char-grid"></div></div>
+  <div class="category"><h2>その他</h2><div id="extra" class="char-grid"></div></div>
+
+  <script>
 const allDataGroups = [
   dynamitesData, basalasData, galsData, doragonData, soulsData, herosData,
   zeusData, ironData, pixysData, zetumeiData, rugaData, bustersData,
@@ -1602,8 +1601,8 @@ window.onload = function() {
   generateGrid(chrismasData, "chrismas");
   generateGrid(extraData, "extra");
 
-  loadProgress(); // データ復元（内部で即座に.ownedクラスを付与）
-  updateStatus(); // 確実にクラスが付いた後に所持率を計算
+  loadProgress(); 
+  updateStatus(); 
 };
 
 // --- 4. クリック時の処理（4ステップローテーション） ---
@@ -1626,7 +1625,6 @@ function check(element) {
       targetChar.currentForm = -1; 
     }
 
-    // クリック時はアニメーション付きで視覚効果を更新
     updateElementVisual(element, targetChar, true);
   } else {
     element.classList.toggle("owned");
@@ -1636,11 +1634,10 @@ function check(element) {
   updateStatus();
 }
 
-// キャラクターの表示を更新する関数（isAnimated引数を追加）
+// キャラクターの表示を更新する関数
 function updateElementVisual(element, targetChar, isAnimated = false) {
   if (!targetChar.forms) return;
 
-  // クラスの付け外しは遅延させず、即座に行う
   if (targetChar.currentForm === undefined || targetChar.currentForm === -1) {
     element.classList.remove("owned");
   } else {
@@ -1651,7 +1648,6 @@ function updateElementVisual(element, targetChar, isAnimated = false) {
   const targetForm = targetChar.forms[formIndex];
 
   if (isAnimated) {
-    // クリックされた時のみ回転アニメーションを適用
     element.classList.add("form-changing");
     
     setTimeout(() => {
@@ -1663,7 +1659,6 @@ function updateElementVisual(element, targetChar, isAnimated = false) {
       element.classList.remove("form-changing");
     }, 400);
   } else {
-    // ページ読み込み（復元）や一括変更時はアニメーションなしで即座に書き換え
     element.querySelector('.char-img').src = targetForm.img;
     element.querySelector('.char-name').textContent = targetForm.name;
   }
@@ -1704,7 +1699,6 @@ function loadProgress() {
 
         if (char.forms) {
           char.currentForm = progress[char.id];
-          // 復元時はアニメーションフラグを false にして即時反映
           updateElementVisual(el, char, false);
         } else {
           if (progress[char.id] === true) {
@@ -1724,26 +1718,34 @@ function updateStatus() {
   document.getElementById("count-display").textContent = `(${owned}/${all})`;
 }
 
-// ★新設：全選択機能の処理関数
+// ★変更：一括で形態を1つ進める（最大形態なら維持する）処理
 function selectAll() {
-  if (confirm("すべてのキャラクターを所持状態（第1形態）にしますか？")) {
+  if (confirm("すべてのキャラクターの形態を1段階進めますか？\n（最大形態のキャラはそのまま維持されます）")) {
     for (const group of allDataGroups) {
       for (const char of group) {
         const el = document.getElementById(char.id);
         if (!el) continue;
 
         if (char.forms) {
-          // 形態切り替え機能のあるキャラは 第1形態(0) に設定
-          char.currentForm = 0;
-          updateElementVisual(el, char, false); // アニメーションなしですばやくUI更新
+          if (char.currentForm === undefined) {
+            char.currentForm = -1;
+          }
+
+          // 現在が最大形態 (forms.length - 1) 未満の場合のみ、インデックスを進める
+          if (char.currentForm < char.forms.length - 1) {
+            char.currentForm++;
+          }
+          // 最大形態に達している場合は、何もしない（状態をそのまま維持）
+
+          updateElementVisual(el, char, false); 
         } else {
-          // 形態切り替えのない通常のキャラ
+          // 形態切り替えのない通常のキャラは、そのまま所持状態にする
           el.classList.add("owned");
         }
       }
     }
-    saveProgress();  // ローカルストレージに最新状態を即時保存
-    updateStatus();  // 所持率バーのパーセンテージを再計算
+    saveProgress();  
+    updateStatus();  
   }
 }
 
